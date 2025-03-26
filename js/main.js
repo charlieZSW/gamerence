@@ -146,7 +146,7 @@ function updateGameSection(sectionTitle, games) {
         const sections = document.querySelectorAll('section.mb-12');
         for (let i = 0; i < sections.length; i++) {
             const heading = sections[i].querySelector('h2');
-            if (heading && (heading.textContent.trim() === 'Popular Games' || heading.textContent.trim() === '热门游戏')) {
+            if (heading && heading.textContent.trim() === 'Popular Games') {
                 container = sections[i].querySelector('.grid');
                 break;
             }
@@ -156,7 +156,7 @@ function updateGameSection(sectionTitle, games) {
         const sections = document.querySelectorAll('section.mb-12');
         for (let i = 0; i < sections.length; i++) {
             const heading = sections[i].querySelector('h2');
-            if (heading && (heading.textContent.trim() === 'Latest Games' || heading.textContent.trim() === '最新游戏')) {
+            if (heading && heading.textContent.trim() === 'Latest Games') {
                 container = sections[i].querySelector('.grid');
                 break;
             }
@@ -205,7 +205,7 @@ function createGameCard(game) {
     // Build game card HTML
     const isNew = game.isNew || (game.dateAdded && isNewGame(game.dateAdded));
     const badgeClass = isNew ? 'bg-apple-green' : 'bg-apple-blue';
-    const badgeText = isNew ? 'New上线' : '热门';
+    const badgeText = isNew ? 'New Release' : 'Popular';
     
     gameCard.innerHTML = `
         <div class="relative aspect-video">
@@ -353,7 +353,7 @@ function initFeaturedCarousel(featuredGames) {
             <div class="absolute bottom-0 left-0 p-4 md:p-6 text-white z-20">
                 <h3 class="text-2xl md:text-3xl font-bold mb-2">${game.title}</h3>
                 <p class="mb-4 text-sm md:text-base max-w-xl">${game.description}</p>
-                <a href="./games/play.html?id=${game.id}" class="bg-apple-blue hover:bg-blue-600 text-white px-4 py-2 rounded-full inline-block transition-colors">立即游玩</a>
+                <a href="./games/play.html?id=${game.id}" class="bg-apple-blue hover:bg-blue-600 text-white px-4 py-2 rounded-full inline-block transition-colors">Play Now</a>
             </div>
         `;
         // Add carousel item before indicator
@@ -393,8 +393,7 @@ function updateCategoryCount(games) {
         console.log('Category count statistics:', categoryCounts);
         
         // Update category cards on page
-        const categorySection = document.querySelector('section h2.text-2xl[text="Game Category"]') || 
-                               document.querySelector('section h2.text-2xl');
+        const categorySection = document.querySelector('section h2.text-2xl');
         
         if (!categorySection) {
             console.error('Game category section not found');
@@ -404,16 +403,16 @@ function updateCategoryCount(games) {
         const categoryCards = document.querySelectorAll('section h2.text-2xl ~ div.grid > a');
         console.log('Found category card count:', categoryCards.length);
         
-        // Category name mapping table (Chinese name to English category ID mapping)
+        // Category name mapping table (English name to category ID mapping)
         const categoryMapping = {
-            'Action Game': 'action',
-            'Puzzle Game': 'puzzle',
-            'Strategy Game': 'strategy',
-            'Sports Game': 'sports',
-            'Adventure Game': 'adventure',
-            'RPG Game': 'rpg',
-            'Shooter Game': 'shooter',
-            'Racing Game': 'racing'
+            'Action Games': 'action',
+            'Puzzle Games': 'puzzle',
+            'Strategy Games': 'strategy',
+            'Sports Games': 'sports',
+            'Adventure Games': 'adventure',
+            'RPG Games': 'rpg',
+            'Shooter Games': 'shooter',
+            'Racing Games': 'racing'
         };
         
         categoryCards.forEach(card => {

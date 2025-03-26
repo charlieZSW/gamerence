@@ -74,10 +74,10 @@
             <div class="flex justify-between items-center mb-4">
                 <h2 class="text-2xl font-bold">All New Games</h2>
                 <div class="relative">
-                    <select class="bg-white border border-gray-300 rounded-md px-4 py-2 pr-8 appearance-none focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent">
-                        <option>Latest Release</option>
-                        <option>Highest Rated</option>
-                        <option>Most Popular</option>
+                    <select id="sort-dropdown" class="bg-white border border-gray-300 rounded-md px-4 py-2 pr-8 appearance-none focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent">
+                        <option value="newest">Latest Release</option>
+                        <option value="rating">Highest Rated</option>
+                        <option value="plays">Most Popular</option>
                     </select>
                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                         <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -173,20 +173,15 @@
                     // Hide loading indicator
                     document.getElementById('loading').classList.add('hidden');
                     
-                    // Sort games by date added
-                    const newGames = data
-                        .filter(game => game.dateAdded) // Make sure there's an added date
-                        .sort((a, b) => {
-                            const dateA = new Date(a.dateAdded);
-                            const dateB = new Date(b.dateAdded);
-                            return dateB - dateA; // Descending order, newest first
-                        });
+                    // Store original data for sorting
+                    window.gamesData = data;
                     
                     // Only take games from the last 30 days
                     const now = new Date();
                     const thirtyDaysAgo = new Date(now.setDate(now.getDate() - 30));
                     
-                    const recentGames = newGames.filter(game => {
+                    const recentGames = data.filter(game => {
+                        if (!game.dateAdded) return false;
                         const addedDate = new Date(game.dateAdded);
                         return addedDate >= thirtyDaysAgo;
                     });
@@ -203,6 +198,9 @@
                         
                         // Setup pagination
                         setupPagination(recentGames.length);
+                        
+                        // Setup sorting
+                        setupSorting();
                     }
                 })
                 .catch(error => {
@@ -211,6 +209,47 @@
                     document.getElementById('no-results').classList.remove('hidden');
                 });
         });
+        
+        /**
+         * Set up sorting functionality
+         */
+        function setupSorting() {
+            const sortDropdown = document.getElementById('sort-dropdown');
+            if (sortDropdown) {
+                sortDropdown.addEventListener('change', () => {
+                    const sortedGames = getSortedGames(sortDropdown.value);
+                    displayGames(sortedGames);
+                    setupPagination(sortedGames.length);
+                });
+            }
+        }
+        
+        /**
+         * Sort games based on selected criteria
+         */
+        function getSortedGames(sortType = 'newest') {
+            // Make sure we're only sorting recent games (within the last 30 days)
+            const games = window.recentGames || [];
+            let sortedGames = [...games];
+            
+            switch (sortType) {
+                case 'newest':
+                    sortedGames.sort((a, b) => {
+                        const dateA = new Date(a.dateAdded || 0);
+                        const dateB = new Date(b.dateAdded || 0);
+                        return dateB - dateA;
+                    });
+                    break;
+                case 'rating':
+                    sortedGames.sort((a, b) => (b.rating || 0) - (a.rating || 0));
+                    break;
+                case 'plays':
+                    sortedGames.sort((a, b) => (b.plays || 0) - (a.plays || 0));
+                    break;
+            }
+            
+            return sortedGames;
+        }
         
         /**
          * Display games with pagination
@@ -232,6 +271,13 @@
             const endIndex = Math.min(startIndex + itemsPerPage, games.length);
             const currentPageGames = games.slice(startIndex, endIndex);
             
+            if (currentPageGames.length === 0) {
+                document.getElementById('no-results').classList.remove('hidden');
+                return;
+            }
+            
+            document.getElementById('no-results').classList.add('hidden');
+            
             // Add game cards
             currentPageGames.forEach(game => {
                 const card = document.createElement('div');
@@ -247,6 +293,8 @@
                             <h3 class="font-bold text-gray-900 mb-1 line-clamp-1">${game.title}</h3>
                             <div class="flex flex-wrap gap-1 mb-2">
                                 <span class="text-xs bg-gray-200 rounded-full px-2 py-1">${game.category}</span>
+                                ${game.rating ? `<span class="text-xs bg-gray-200 rounded-full px-2 py-1">★ ${game.rating}</span>` : ''}
+                                ${game.plays ? `<span class="text-xs bg-gray-200 rounded-full px-2 py-1">${game.plays} plays</span>` : ''}
                             </div>
                             <p class="text-gray-600 text-sm line-clamp-2">${game.description}</p>
                         </div>
@@ -298,7 +346,7 @@
             `;
             prevButton.disabled = true; // Initial page is first page, disable previous button
             prevButton.addEventListener('click', () => {
-                const currentPage = parseInt(paginationContainer.querySelector('button.bg-indigo-600').textContent || '1');
+                const currentPage = parseInt(paginationContainer.querySelector('button.bg-indigo-600')?.textContent || '1');
                 if (currentPage > 1) {
                     changePage(currentPage - 1);
                 }
@@ -341,7 +389,7 @@
                 </svg>
             `;
             nextButton.addEventListener('click', () => {
-                const currentPage = parseInt(paginationContainer.querySelector('button.bg-indigo-600').textContent || '1');
+                const currentPage = parseInt(paginationContainer.querySelector('button.bg-indigo-600')?.textContent || '1');
                 if (currentPage < totalPages) {
                     changePage(currentPage + 1);
                 }
@@ -350,14 +398,18 @@
         }
         
         /**
-         * Change current page
+         * Change page in pagination
          */
         function changePage(page) {
-            // Get recent games
-            const games = window.recentGames || [];
+            // Get current sort
+            const sortDropdown = document.getElementById('sort-dropdown');
+            const sortType = sortDropdown ? sortDropdown.value : 'newest';
+            
+            // Get sorted games
+            const sortedGames = getSortedGames(sortType);
             
             // Display games for selected page
-            displayGames(games, page);
+            displayGames(sortedGames, page);
             
             // Update page buttons
             const paginationContainer = document.getElementById('pagination-container');
@@ -373,7 +425,7 @@
             });
             
             // Update prev/next button state
-            const totalPages = Math.ceil(games.length / 12);
+            const totalPages = Math.ceil(sortedGames.length / 12);
             const prevButton = buttons[0];
             const nextButton = buttons[buttons.length - 1];
             
