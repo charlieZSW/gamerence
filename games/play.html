@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading... - Gamerence | Free Online HTML5 Games</title>
+    <meta name="description" content="Play the best HTML5 games for free on Gamerence, no download required, just click and play.">
+    <meta name="keywords" content="html5 games, free games, online games">
+    
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="../css/tailwind/tailwind.min.css">
+    <link rel="stylesheet" href="../css/tailwind/custom-tailwind.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/main.css">
+    
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="../images/logo/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../images/logo/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="../images/logo/apple-touch-icon.png">
+</head>
+<body class="bg-gray-100 font-sans" x-data="gameApp()">
+    <header class="bg-white shadow-md py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <a href="../index.html" class="flex items-center space-x-3">
+                <img src="../images/logo/抽象动物剪影图标_白底高对比度_狼头轮廓融合游戏手柄元素_耳朵部位融入方向键像素风格_单色深灰轮廓线-removebg-preview.png" alt="Gamerence Logo" class="h-12 w-auto">
+                <span class="text-2xl font-bold text-gray-800">Gamerence</span>
+            </a>
+            <nav class="hidden md:flex space-x-6">
+                <a href="../index.html" class="text-gray-600 hover:text-apple-blue">Home</a>
+                <a href="../categories/categories.html" class="text-gray-600 hover:text-apple-blue">Categories</a>
+                <a href="./all-games.html" class="text-gray-600 hover:text-apple-blue">All Games</a>
+                <a href="./popular.html" class="text-gray-600 hover:text-apple-blue">Popular Games</a>
+                <a href="./new.html" class="text-gray-600 hover:text-apple-blue">New Games</a>
+            </nav>
+            <div class="md:hidden" x-data="{ open: false }">
+                <button @click="open = !open" class="text-gray-500 hover:text-apple-blue">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+                <div x-show="open" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2 z-10" style="display: none;">
+                    <a href="../index.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Home</a>
+                    <a href="../categories/categories.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Categories</a>
+                    <a href="./all-games.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">All Games</a>
+                    <a href="./popular.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Popular Games</a>
+                    <a href="./new.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">New Games</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <!-- Game Not Found Error -->
+        <div x-show="!gameFound && !isLoading" class="bg-white rounded-lg shadow-md p-8 text-center">
+            <svg class="w-16 h-16 text-red-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <h2 class="text-2xl font-bold mb-2">Game Not Found</h2>
+            <p class="text-gray-600 mb-6">Sorry, the game you are looking for does not exist or has been removed.</p>
+            <div class="flex justify-center space-x-4">
+                <a href="../index.html" class="bg-apple-blue hover:bg-blue-600 text-white px-4 py-2 rounded">Return to Home</a>
+                <a href="./all-games.html" class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded">Browse All Games</a>
+            </div>
+        </div>
+
+        <!-- Loading Indicator -->
+        <div x-show="isLoading" class="bg-white rounded-lg shadow-md p-8 text-center">
+            <div class="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-apple-blue mb-4"></div>
+            <h2 class="text-xl font-bold">Loading game...</h2>
+        </div>
+
+        <!-- Game Content -->
+        <div x-show="gameFound && !isLoading">
+            <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+                <!-- Game Header Area -->
+                <div class="mb-6">
+                    <!-- Game Title -->
+                    <h1 class="text-3xl font-bold mb-4" x-text="game.title"></h1>
+                    
+                    <!-- Game Screen - Centered and Larger -->
+                    <div class="game-container bg-black rounded-lg overflow-hidden mb-6 mx-auto max-w-5xl" style="height: 75vh; min-height: 500px;">
+                        <iframe class="w-full h-full" :src="game.embedUrl" frameborder="0" allow="gamepad *" allowfullscreen></iframe>
+                    </div>
+                    
+                    <!-- Game Information Area - Below Game Screen -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- Basic Game Information -->
+                        <div class="md:col-span-2">
+                            <div class="flex flex-wrap mb-4">
+                                <span class="bg-apple-light-gray text-gray-700 rounded-full px-3 py-1 text-xs mr-2 mb-2" x-text="game.category"></span>
+                                <span class="bg-apple-light-gray text-gray-700 rounded-full px-3 py-1 text-xs mr-2 mb-2">
+                                    <span x-text="game.plays"></span> plays
+                                </span>
+                            </div>
+                            <p class="text-gray-600 mb-4" x-text="game.description"></p>
+                            
+                            <!-- Game Details and Features -->
+                            <div class="pt-4">
+                                <h2 class="text-xl font-bold mb-4">Game Details</h2>
+                                <p class="text-gray-600 mb-6" x-text="game.fullDescription || game.description"></p>
+                                
+                                <div x-show="game.features && game.features.length > 0">
+                                    <h3 class="text-lg font-semibold mb-2">Game Features</h3>
+                                    <ul class="list-disc pl-5 mb-6 space-y-1 text-gray-600">
+                                        <template x-for="feature in game.features" :key="feature">
+                                            <li x-text="feature"></li>
+                                        </template>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Sidebar Information -->
+                        <div class="md:col-span-1">
+                            <!-- Rating -->
+                            <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                                <h3 class="text-lg font-semibold mb-2">Game Rating</h3>
+                                <div class="flex items-center mb-2">
+                                    <div class="text-yellow-400 mr-2 flex">
+                                        <template x-for="i in 5" :key="i">
+                                            <svg class="w-5 h-5" :fill="i <= Math.round(game.rating) ? 'currentColor' : 'none'" :stroke="i <= Math.round(game.rating) ? 'none' : 'currentColor'" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path>
+                                            </svg>
+                                        </template>
+                                    </div>
+                                    <span class="text-gray-600 text-sm"><span x-text="game.rating"></span>/5</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Instructions -->
+                            <div class="bg-gray-50 p-4 rounded-lg mb-4" x-show="game.instructions">
+                                <h3 class="text-lg font-semibold mb-2">Instructions</h3>
+                                <p class="text-gray-600" x-text="game.instructions"></p>
+                            </div>
+                            
+                            <!-- Share and Favorite -->
+                            <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                                <h3 class="text-lg font-semibold mb-3">Share Game</h3>
+                                <div class="flex space-x-2 mb-4">
+                                    <button @click="shareGame()" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm flex items-center w-full justify-center">
+                                        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z"></path>
+                                        </svg>
+                                        Share Game
+                                    </button>
+                                </div>
+                                <button @click="toggleFavorite()" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md text-sm flex items-center w-full justify-center">
+                                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    Favorite Game
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Similar Games -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-bold mb-4">Recommended Games</h2>
+                <div x-show="similarGames.length === 0" class="text-center py-8 text-gray-500">
+                    Loading recommended games...
+                </div>
+                <div x-show="similarGames.length > 0" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                    <template x-for="similarGame in similarGames" :key="similarGame.id">
+                        <a :href="'./play.html?id=' + similarGame.id" class="game-card bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">                            <div class="relative aspect-video">
+                                <img :src="similarGame.image" :alt="similarGame.title" class="w-full h-full object-cover">
+                                <template x-if="similarGame.isNew">
+                                    <div class="absolute top-0 right-0 bg-apple-green text-white text-xs px-2 py-1 m-2 rounded">New</div>
+                                </template>
+                            </div>
+                            <div class="p-3">
+                                <h3 class="font-bold text-sm line-clamp-1" x-text="similarGame.title"></h3>
+                                <div class="flex text-xs text-gray-500 mt-1 flex-wrap">
+                                    <template x-if="similarGame.category">
+                                        <span class="bg-apple-light-gray text-gray-700 rounded-full px-2 py-0.5 text-xs mr-1 mb-1" x-text="similarGame.category"></span>
+                                    </template>
+                                </div>
+                            </div>
+                        </a>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">About Gamerence</h3>
+                    <p class="text-gray-400">Gamerence is a platform that offers free online HTML5 games, no download needed, start playing instantly. From action, adventure to puzzle, strategy, all kinds of games are available.</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Navigation</h3>
+                    <ul class="space-y-2">
+                        <li><a href="../index.html" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="../categories/categories.html" class="text-gray-400 hover:text-white">Categories</a></li>
+                        <li><a href="./all-games.html" class="text-gray-400 hover:text-white">All Games</a></li>
+                        <li><a href="./popular.html" class="text-gray-400 hover:text-white">Popular</a></li>
+                        <li><a href="./new.html" class="text-gray-400 hover:text-white">Latest Games</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Popular Categories</h3>
+                    <ul class="space-y-2">
+                        <li><a href="../categories/category-template.html?category=action" class="text-gray-400 hover:text-white">Action Games</a></li>
+                        <li><a href="../categories/category-template.html?category=adventure" class="text-gray-400 hover:text-white">Adventure Games</a></li>
+                        <li><a href="../categories/category-template.html?category=puzzle" class="text-gray-400 hover:text-white">Puzzle Games</a></li>
+                        <li><a href="../categories/category-template.html?category=strategy" class="text-gray-400 hover:text-white">Strategy Games</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between">
+                <p class="text-gray-400">© 2025 Gamerence. All rights reserved.</p>
+                <div class="mt-4 md:mt-0">
+                    <a href="../privacy.html" class="text-gray-400 hover:text-white mr-4">Privacy Policy</a>
+                    <a href="../terms.html" class="text-gray-400 hover:text-white">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Custom JavaScript -->
+    <script src="../js/main.js"></script>
+    <script>
+        function gameApp() {
+            return {
+                gameId: '',
+                game: {},
+                similarGames: [],
+                isLoading: true,
+                gameFound: false,
+                
+                // Initialize
+                init() {
+                    // Get game ID from URL
+                    const urlParams = new URLSearchParams(window.location.search);
+                    this.gameId = urlParams.get('id');
+                    
+                    if (!this.gameId) {
+                        this.isLoading = false;
+                        return;
+                    }
+                    
+                    // Load game data
+                    this.loadGameData();
+                },
+                
+                // Load game data
+                async loadGameData() {
+                    try {
+                        // Fix data file path to ensure correct access
+                        const response = await fetch('../data/games.json');
+                        if (!response.ok) {
+                            throw new Error('Unable to load game data');
+                        }
+                        
+                        const data = await response.json();
+                        
+                        // Find current game
+                        const currentGame = data.find(game => game.id === this.gameId);
+                        
+                        if (currentGame) {
+                            this.game = currentGame;
+                            
+                            // Set page title and meta tags
+                            document.title = `${currentGame.title} - Gamerence | Free Online HTML5 Games`;
+                            document.querySelector('meta[name="description"]').setAttribute('content', currentGame.description);
+                            document.querySelector('meta[name="keywords"]').setAttribute('content', `${currentGame.title}, ${currentGame.category}, html5 games, free games, online games`);
+                            
+                            // Handle embed URL
+                            if (!currentGame.embedUrl && currentGame.url) {
+                                // If no embedUrl but has url field, try to convert
+                                const urlParts = currentGame.url.split('/');
+                                const gameName = urlParts[urlParts.length - 1].replace('.html', '');
+                                this.game.embedUrl = `https://www.crazygames.com/embed/${gameName}`;
+                            }
+                            
+                            // Find similar games (same category or random recommendations)
+                            this.loadSimilarGames(data, currentGame);
+                            
+                            this.gameFound = true;
+                        } else {
+                            this.gameFound = false;
+                        }
+                    } catch (error) {
+                        console.error('Failed to load game data:', error);
+                        this.gameFound = false;
+                    } finally {
+                        this.isLoading = false;
+                    }
+                },
+                
+                // Load similar games
+                loadSimilarGames(allGames, currentGame) {
+                    // Find games in the same category
+                    const sameCategory = allGames.filter(game => 
+                        game.id !== currentGame.id && 
+                        game.category === currentGame.category
+                    );
+                    
+                    // Random games (for filling)
+                    const otherGames = allGames.filter(game => 
+                        game.id !== currentGame.id && 
+                        game.category !== currentGame.category
+                    );
+                    
+                    // Combine results (max 10)
+                    const combined = [...sameCategory];
+                    
+                    // If same category games are less than 10, add other random games
+                    if (combined.length < 10) {
+                        // Randomly shuffle otherGames array
+                        const shuffled = [...otherGames].sort(() => 0.5 - Math.random());
+                        // Take the required number of games
+                        const additional = shuffled.slice(0, 10 - combined.length);
+                        combined.push(...additional);
+                    }
+                    
+                    this.similarGames = combined.slice(0, 10);
+                },
+                
+                // Share game
+                shareGame() {
+                    if (navigator.share) {
+                        navigator.share({
+                            title: `${this.game.title} - Gamerence`,
+                            text: this.game.description,
+                            url: window.location.href
+                        });
+                    } else {
+                        // Copy link to clipboard
+                        const el = document.createElement('textarea');
+                        el.value = window.location.href;
+                        document.body.appendChild(el);
+                        el.select();
+                        document.execCommand('copy');
+                        document.body.removeChild(el);
+                        alert('Link copied to clipboard!');
+                    }
+                },
+                
+                // Favorite game
+                toggleFavorite() {
+                    // Logic for favorite functionality can be implemented here
+                    // Simple simulation
+                    alert(`Game "${this.game.title}" has been ${Math.random() > 0.5 ? 'added to' : 'removed from'} favorites!`);
+                }
+            }
+        }
+    </script>
+</body>
+</html> 

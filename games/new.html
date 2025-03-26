@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Games - Gamerence | Free Online HTML5 Games</title>
+    <meta name="description" content="Browse the latest online HTML5 games, including action, adventure, puzzle and strategy games.">
+    <meta name="keywords" content="new games,newly released games,HTML5 games,free games,online games">
+    
+    <link rel="canonical" href="https://gamerence.com/games/new.html">
+    
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="../css/tailwind/tailwind.min.css">
+    <link rel="stylesheet" href="../css/tailwind/custom-tailwind.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/main.css">
+    
+    <!-- Alpine.js (Lightweight JavaScript Framework) -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="../images/logo/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../images/logo/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="../images/logo/apple-touch-icon.png">
+</head>
+<body class="bg-gray-100 text-gray-900">
+    <!-- Navigation Bar -->
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <a href="../index.html" class="flex items-center space-x-3">
+                    <img src="../images/logo/抽象动物剪影图标_白底高对比度_狼头轮廓融合游戏手柄元素_耳朵部位融入方向键像素风格_单色深灰轮廓线-removebg-preview.png" alt="Gamerence Logo" class="h-12 w-auto">
+                    <span class="text-2xl font-bold">Gamerence</span>
+                </a>
+                
+                <div class="flex items-center space-x-6">
+                    <nav class="hidden md:flex space-x-6">
+                        <a href="../index.html" class="text-gray-600 hover:text-indigo-600 transition-colors">Home</a>
+                        <a href="../categories/categories.html" class="text-gray-600 hover:text-indigo-600 transition-colors">Categories</a>
+                        <a href="./all-games.html" class="text-gray-600 hover:text-indigo-600 transition-colors">All Games</a>
+                        <a href="./popular.html" class="text-gray-600 hover:text-indigo-600 transition-colors">Popular Games</a>
+                        <a href="./new.html" class="text-gray-600 hover:text-indigo-600 transition-colors font-medium">New Games</a>
+                    </nav>
+                    
+                    <div class="relative" x-data="{ open: false }">
+                        <button @click="open = !open" class="md:hidden text-gray-500 hover:text-gray-600 focus:outline-none">
+                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                            </svg>
+                        </button>
+                        
+                        <div x-show="open" @click.away="open = false" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10" style="display: none;">
+                            <a href="../index.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Home</a>
+                            <a href="../categories/categories.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Categories</a>
+                            <a href="./all-games.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">All Games</a>
+                            <a href="./popular.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Popular Games</a>
+                            <a href="./new.html" class="block px-4 py-2 text-gray-800 bg-gray-100">New Games</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-800 mb-2">New Games</h1>
+            <p class="text-gray-600">Explore the latest games added to our platform.</p>
+        </div>
+        
+        <!-- Game List -->
+        <div class="mb-8">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-2xl font-bold">All New Games</h2>
+                <div class="relative">
+                    <select class="bg-white border border-gray-300 rounded-md px-4 py-2 pr-8 appearance-none focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent">
+                        <option>Latest Release</option>
+                        <option>Highest Rated</option>
+                        <option>Most Popular</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="games-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Games will be loaded dynamically through JavaScript -->
+                
+                <!-- Loading State -->
+                <div id="loading" class="col-span-full flex justify-center py-12">
+                    <svg class="animate-spin h-8 w-8 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                </div>
+                
+                <!-- No Results State -->
+                <div id="no-results" class="col-span-full py-12 text-center hidden">
+                    <div class="mx-auto w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center mb-4">
+                        <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-medium text-gray-900">No new games found</h3>
+                    <p class="mt-1 text-gray-500">Please check back later, we regularly update our game content.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Pagination -->
+        <section class="mb-8 flex justify-center">
+            <div id="pagination-container" class="flex space-x-2" style="display: none;">
+                <!-- Pagination buttons will be generated by JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">About Gamerence</h3>
+                    <p class="text-gray-400">Gamerence is a platform that offers free online HTML5 games, no download needed, start playing instantly. From action, adventure to puzzle, strategy, all kinds of games are available.</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Navigation</h3>
+                    <ul class="space-y-2">
+                        <li><a href="../index.html" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="../categories/categories.html" class="text-gray-400 hover:text-white">Categories</a></li>
+                        <li><a href="./all-games.html" class="text-gray-400 hover:text-white">All Games</a></li>
+                        <li><a href="./popular.html" class="text-gray-400 hover:text-white">Popular</a></li>
+                        <li><a href="./new.html" class="text-gray-400 hover:text-white">Latest Games</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Popular Categories</h3>
+                    <ul class="space-y-2">
+                        <li><a href="../categories/category-template.html?category=action" class="text-gray-400 hover:text-white">Action Games</a></li>
+                        <li><a href="../categories/category-template.html?category=adventure" class="text-gray-400 hover:text-white">Adventure Games</a></li>
+                        <li><a href="../categories/category-template.html?category=puzzle" class="text-gray-400 hover:text-white">Puzzle Games</a></li>
+                        <li><a href="../categories/category-template.html?category=strategy" class="text-gray-400 hover:text-white">Strategy Games</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between">
+                <p class="text-gray-400">© 2025 Gamerence. All rights reserved.</p>
+                <div class="mt-4 md:mt-0">
+                    <a href="../privacy.html" class="text-gray-400 hover:text-white mr-4">Privacy Policy</a>
+                    <a href="../terms.html" class="text-gray-400 hover:text-white">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../js/main.js"></script>
+    <script>
+        // Load new games data
+        document.addEventListener('DOMContentLoaded', function() {
+            // Don't hide the loading indicator right away, wait for data to load
+            
+            fetch('../data/games.json')
+                .then(response => response.json())
+                .then(data => {
+                    // Hide loading indicator
+                    document.getElementById('loading').classList.add('hidden');
+                    
+                    // Sort games by date added
+                    const newGames = data
+                        .filter(game => game.dateAdded) // Make sure there's an added date
+                        .sort((a, b) => {
+                            const dateA = new Date(a.dateAdded);
+                            const dateB = new Date(b.dateAdded);
+                            return dateB - dateA; // Descending order, newest first
+                        });
+                    
+                    // Only take games from the last 30 days
+                    const now = new Date();
+                    const thirtyDaysAgo = new Date(now.setDate(now.getDate() - 30));
+                    
+                    const recentGames = newGames.filter(game => {
+                        const addedDate = new Date(game.dateAdded);
+                        return addedDate >= thirtyDaysAgo;
+                    });
+                    
+                    // Store recent games in a variable for pagination
+                    window.recentGames = recentGames;
+                    
+                    if (recentGames.length === 0) {
+                        // Show no results
+                        document.getElementById('no-results').classList.remove('hidden');
+                    } else {
+                        // Display first page of games
+                        displayGames(recentGames, 1);
+                        
+                        // Setup pagination
+                        setupPagination(recentGames.length);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading game data:', error);
+                    document.getElementById('loading').classList.add('hidden');
+                    document.getElementById('no-results').classList.remove('hidden');
+                });
+        });
+        
+        /**
+         * Display games with pagination
+         */
+        function displayGames(games, page = 1, itemsPerPage = 12) {
+            const container = document.getElementById('games-container');
+            if (!container) return;
+            
+            // Clear existing content except loading and no-results
+            const currentContent = Array.from(container.children);
+            currentContent.forEach(child => {
+                if (child.id !== 'loading' && child.id !== 'no-results') {
+                    child.remove();
+                }
+            });
+            
+            // Calculate pagination
+            const startIndex = (page - 1) * itemsPerPage;
+            const endIndex = Math.min(startIndex + itemsPerPage, games.length);
+            const currentPageGames = games.slice(startIndex, endIndex);
+            
+            // Add game cards
+            currentPageGames.forEach(game => {
+                const card = document.createElement('div');
+                card.className = 'bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow game-card';
+                
+                card.innerHTML = `
+                    <a href="./play.html?id=${game.id}">
+                        <div class="relative">
+                            <img src="${game.image}" alt="${game.title}" class="w-full object-cover h-40">
+                            <div class="absolute top-0 right-0 bg-green-500 text-white text-xs px-2 py-1 m-2 rounded">New</div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-bold text-gray-900 mb-1 line-clamp-1">${game.title}</h3>
+                            <div class="flex flex-wrap gap-1 mb-2">
+                                <span class="text-xs bg-gray-200 rounded-full px-2 py-1">${game.category}</span>
+                            </div>
+                            <p class="text-gray-600 text-sm line-clamp-2">${game.description}</p>
+                        </div>
+                    </a>
+                `;
+                
+                container.appendChild(card);
+            });
+            
+            // Show pagination container if we have games
+            const paginationContainer = document.getElementById('pagination-container');
+            if (paginationContainer && games.length > 0) {
+                paginationContainer.style.display = 'flex';
+            }
+        }
+        
+        /**
+         * Set up pagination
+         */
+        function setupPagination(totalItems, itemsPerPage = 12) {
+            const paginationContainer = document.getElementById('pagination-container');
+            if (!paginationContainer) {
+                console.error('Pagination container not found');
+                return;
+            }
+            
+            // Total pages
+            const totalPages = Math.ceil(totalItems / itemsPerPage);
+            
+            // If only one page, hide pagination
+            if (totalPages <= 1) {
+                paginationContainer.style.display = 'none';
+                return;
+            }
+            
+            // Show pagination
+            paginationContainer.style.display = 'flex';
+            
+            // Clear existing pagination
+            paginationContainer.innerHTML = '';
+            
+            // Add previous page button
+            const prevButton = document.createElement('button');
+            prevButton.className = 'w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-700 hover:bg-indigo-600 hover:text-white transition-colors';
+            prevButton.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+            `;
+            prevButton.disabled = true; // Initial page is first page, disable previous button
+            prevButton.addEventListener('click', () => {
+                const currentPage = parseInt(paginationContainer.querySelector('button.bg-indigo-600').textContent || '1');
+                if (currentPage > 1) {
+                    changePage(currentPage - 1);
+                }
+            });
+            paginationContainer.appendChild(prevButton);
+            
+            // Add page number buttons (show max 5 pages)
+            const maxVisiblePages = 5;
+            const startPage = 1;
+            const endPage = Math.min(totalPages, maxVisiblePages);
+            
+            for (let i = startPage; i <= endPage; i++) {
+                const pageButton = document.createElement('button');
+                pageButton.className = i === 1 ? 'w-10 h-10 rounded-full bg-indigo-600 text-white flex items-center justify-center' : 'w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-700 hover:bg-indigo-600 hover:text-white transition-colors';
+                pageButton.textContent = i;
+                pageButton.addEventListener('click', () => changePage(i));
+                paginationContainer.appendChild(pageButton);
+            }
+            
+            // If total pages is more than 5, add ellipsis and last page
+            if (totalPages > maxVisiblePages) {
+                const ellipsis = document.createElement('span');
+                ellipsis.className = 'w-10 h-10 flex items-center justify-center';
+                ellipsis.textContent = '...';
+                paginationContainer.appendChild(ellipsis);
+                
+                const lastPageButton = document.createElement('button');
+                lastPageButton.className = 'w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-700 hover:bg-indigo-600 hover:text-white transition-colors';
+                lastPageButton.textContent = totalPages;
+                lastPageButton.addEventListener('click', () => changePage(totalPages));
+                paginationContainer.appendChild(lastPageButton);
+            }
+            
+            // Add next page button
+            const nextButton = document.createElement('button');
+            nextButton.className = 'w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-700 hover:bg-indigo-600 hover:text-white transition-colors';
+            nextButton.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+            `;
+            nextButton.addEventListener('click', () => {
+                const currentPage = parseInt(paginationContainer.querySelector('button.bg-indigo-600').textContent || '1');
+                if (currentPage < totalPages) {
+                    changePage(currentPage + 1);
+                }
+            });
+            paginationContainer.appendChild(nextButton);
+        }
+        
+        /**
+         * Change current page
+         */
+        function changePage(page) {
+            // Get recent games
+            const games = window.recentGames || [];
+            
+            // Display games for selected page
+            displayGames(games, page);
+            
+            // Update page buttons
+            const paginationContainer = document.getElementById('pagination-container');
+            if (!paginationContainer) return;
+            
+            const buttons = paginationContainer.querySelectorAll('button');
+            buttons.forEach(button => {
+                if (button.textContent && parseInt(button.textContent) === page) {
+                    button.className = 'w-10 h-10 rounded-full bg-indigo-600 text-white flex items-center justify-center';
+                } else if (button.textContent && !isNaN(parseInt(button.textContent))) {
+                    button.className = 'w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-700 hover:bg-indigo-600 hover:text-white transition-colors';
+                }
+            });
+            
+            // Update prev/next button state
+            const totalPages = Math.ceil(games.length / 12);
+            const prevButton = buttons[0];
+            const nextButton = buttons[buttons.length - 1];
+            
+            if (prevButton) {
+                if (page === 1) {
+                    prevButton.classList.add('opacity-50', 'cursor-not-allowed');
+                    prevButton.disabled = true;
+                } else {
+                    prevButton.classList.remove('opacity-50', 'cursor-not-allowed');
+                    prevButton.disabled = false;
+                }
+            }
+            
+            if (nextButton) {
+                if (page === totalPages) {
+                    nextButton.classList.add('opacity-50', 'cursor-not-allowed');
+                    nextButton.disabled = true;
+                } else {
+                    nextButton.classList.remove('opacity-50', 'cursor-not-allowed');
+                    nextButton.disabled = false;
+                }
+            }
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html> 

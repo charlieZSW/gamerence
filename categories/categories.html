@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Categories - Gamerence | Free Online HTML5 Game Platform</title>
+    <meta name="description" content="Browse all game categories on Gamerence platform, find your favorite HTML5 game type.">
+    <meta name="keywords" content="game categories, html5 games, free games, online games, action games, puzzle games, strategy games">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="../images/logo/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../images/logo/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="../images/logo/apple-touch-icon.png">
+    
+    <!-- Import Tailwind CSS -->
+    <link rel="canonical" href="https://gamerence.com/categories/categories.html">
+    
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="../css/tailwind/tailwind.min.css">
+    <link rel="stylesheet" href="../css/tailwind/custom-tailwind.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/main.css">
+    
+    <!-- Alpine.js (Lightweight JavaScript Framework) -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- Add pulsing animation CSS styles -->
+    <style>
+        .loading-text {
+            animation: pulse 1.5s infinite ease-in-out;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+    <header class="bg-white shadow-md py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <a href="../index.html" class="flex items-center space-x-3">
+                <img src="../images/logo/抽象动物剪影图标_白底高对比度_狼头轮廓融合游戏手柄元素_耳朵部位融入方向键像素风格_单色深灰轮廓线-removebg-preview.png" alt="Gamerence Logo" class="h-12 w-auto">
+                <span class="text-2xl font-bold text-apple-blue">Gamerence</span>
+            </a>
+            <nav class="hidden md:flex space-x-6">
+                <a href="../index.html" class="text-gray-600 hover:text-apple-blue">Home</a>
+                <a href="./categories.html" class="text-gray-600 hover:text-apple-blue font-medium">Categories</a>
+                <a href="../games/all-games.html" class="text-gray-600 hover:text-apple-blue">All Games</a>
+                <a href="../games/popular.html" class="text-gray-600 hover:text-apple-blue">Popular Games</a>
+                <a href="../games/new.html" class="text-gray-600 hover:text-apple-blue">New Games</a>
+            </nav>
+            <div class="md:hidden" x-data="{ open: false }">
+                <button @click="open = !open" class="text-gray-500 hover:text-apple-blue">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+                <div x-show="open" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2 z-10" style="display: none;">
+                    <a href="../index.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Home</a>
+                    <a href="./categories.html" class="block px-4 py-2 bg-gray-100 text-apple-blue">Categories</a>
+                    <a href="../games/all-games.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">All Games</a>
+                    <a href="../games/popular.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Popular Games</a>
+                    <a href="../games/new.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">New Games</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-800 mb-2">Game Categories</h1>
+            <p class="text-gray-600">Browse our rich collection of game categories to find your favorite type of games.</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- 动作游戏 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow" data-category="action">
+                <a href="./category-template.html?category=action">
+                    <div class="aspect-video bg-red-500 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                    <div class="p-4">
+                        <h2 class="text-xl font-bold mb-2">Action Games</h2>
+                        <p class="text-gray-600 text-sm">Fast-paced action games, testing player reaction speed and hand-eye coordination.</p>
+                        <div class="mt-4 flex justify-between items-center">
+                            <span class="text-apple-blue font-medium loading-text">Loading...</span>
+                            <span class="text-gray-500 text-sm">Explore →</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- 冒险游戏 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow" data-category="adventure">
+                <a href="./category-template.html?category=adventure">
+                    <div class="aspect-video bg-apple-green flex items-center justify-center">
+                        <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M6 3a1 1 0 011-1h.01a1 1 0 010 2H7a1 1 0 01-1-1zm2 3a1 1 0 00-2 0v1a2 2 0 00-2 2v1a2 2 0 00-2 2v.683a3.7 3.7 0 011.055.485 1.704 1.704 0 001.89 0 3.704 3.704 0 014.11 0 1.704 1.704 0 001.89 0 3.704 3.704 0 014.11 0 1.704 1.704 0 001.89 0A3.7 3.7 0 0118 12.683V12a2 2 0 00-2-2V9a2 2 0 00-2-2V6a1 1 0 10-2 0v1h-1V6a1 1 0 10-2 0v1H8V6z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <div class="p-4">
+                        <h2 class="text-xl font-bold mb-2">Adventure Games</h2>
+                        <p class="text-gray-600 text-sm">Explore mysterious worlds, solve puzzles, and experience engaging storylines.</p>
+                        <div class="mt-4 flex justify-between items-center">
+                            <span class="text-apple-blue font-medium loading-text">Loading...</span>
+                            <span class="text-gray-500 text-sm">Explore →</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- 益智游戏 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow" data-category="puzzle">
+                <a href="./category-template.html?category=puzzle">
+                    <div class="aspect-video bg-purple-500 flex items-center justify-center">
+                        <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 3.5a1.5 1.5 0 013 0V4a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-.5a1.5 1.5 0 000 3h.5a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-.5a1.5 1.5 0 00-3 0v.5a1 1 0 01-1 1H6a1 1 0 01-1-1v-3a1 1 0 00-1-1h-.5a1.5 1.5 0 010-3H4a1 1 0 001-1V6a1 1 0 011-1h3a1 1 0 001-1v-.5z"></path>
+                        </svg>
+                    </div>
+                    <div class="p-4">
+                        <h2 class="text-xl font-bold mb-2">Puzzle Games</h2>
+                        <p class="text-gray-600 text-sm">Exercise your brain, challenge your intelligence, and solve various fun puzzles and problems.</p>
+                        <div class="mt-4 flex justify-between items-center">
+                            <span class="text-apple-blue font-medium loading-text">Loading...</span>
+                            <span class="text-gray-500 text-sm">Explore →</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- 策略游戏 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow" data-category="strategy">
+                <a href="./category-template.html?category=strategy">
+                    <div class="aspect-video bg-yellow-500 flex items-center justify-center">
+                        <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"></path>
+                        </svg>
+                    </div>
+                    <div class="p-4">
+                        <h2 class="text-xl font-bold mb-2">Strategy Games</h2>
+                        <p class="text-gray-600 text-sm">Requires strategic thinking and planning, testing player's intelligence and decision-making.</p>
+                        <div class="mt-4 flex justify-between items-center">
+                            <span class="text-apple-blue font-medium loading-text">Loading...</span>
+                            <span class="text-gray-500 text-sm">Explore →</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- Roguelike游戏 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow" data-category="roguelike">
+                <a href="./category-template.html?category=roguelike">
+                    <div class="aspect-video bg-red-500 flex items-center justify-center">
+                        <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <div class="p-4">
+                        <h2 class="text-xl font-bold mb-2">Roguelike Games</h2>
+                        <p class="text-gray-600 text-sm">Randomly generated levels and permanent death mechanism, each game experience is different.</p>
+                        <div class="mt-4 flex justify-between items-center">
+                            <span class="text-apple-blue font-medium loading-text">Loading...</span>
+                            <span class="text-gray-500 text-sm">Explore →</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- 赛车游戏 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow" data-category="racing">
+                <a href="./category-template.html?category=racing">
+                    <div class="aspect-video bg-blue-500 flex items-center justify-center">
+                        <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"></path>
+                            <path d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3zM14 7a1 1 0 00-1 1v6.05A2.5 2.5 0 0115.95 16H17a1 1 0 001-1v-5a1 1 0 00-.293-.707l-2-2A1 1 0 0015 7h-1z"></path>
+                        </svg>
+                    </div>
+                    <div class="p-4">
+                        <h2 class="text-xl font-bold mb-2">Racing Games</h2>
+                        <p class="text-gray-600 text-sm">Feel the speed and passion, challenge various tracks, and experience driving fun.</p>
+                        <div class="mt-4 flex justify-between items-center">
+                            <span class="text-apple-blue font-medium loading-text">Loading...</span>
+                            <span class="text-gray-500 text-sm">Explore →</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- 体育游戏 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow" data-category="sports">
+                <a href="./category-template.html?category=sports">
+                    <div class="aspect-video bg-green-500 flex items-center justify-center">
+                        <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM4.332 8.027a6.012 6.012 0 011.912-2.706C6.512 5.73 6.974 6 7.5 6A1.5 1.5 0 019 7.5V8a2 2 0 004 0 2 2 0 011.523-1.943A5.977 5.977 0 0116 10c0 .34-.028.675-.083 1H15a2 2 0 00-2 2v2.197A5.973 5.973 0 0110 16v-2a2 2 0 00-2-2 2 2 0 01-2-2 2 2 0 00-1.668-1.973z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <div class="p-4">
+                        <h2 class="text-xl font-bold mb-2">Sports Games</h2>
+                        <p class="text-gray-600 text-sm">Simulate various sports, showcase your athletic talent, and challenge high scores.</p>
+                        <div class="mt-4 flex justify-between items-center">
+                            <span class="text-apple-blue font-medium loading-text">Loading...</span>
+                            <span class="text-gray-500 text-sm">Explore →</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- 角色扮演游戏 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow" data-category="rpg">
+                <a href="./category-template.html?category=rpg">
+                    <div class="aspect-video bg-indigo-500 flex items-center justify-center">
+                        <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <div class="p-4">
+                        <h2 class="text-xl font-bold mb-2">Role-Playing Games</h2>
+                        <p class="text-gray-600 text-sm">Play different roles, experience rich storylines, and improve character abilities.</p>
+                        <div class="mt-4 flex justify-between items-center">
+                            <span class="text-apple-blue font-medium loading-text">Loading...</span>
+                            <span class="text-gray-500 text-sm">Explore →</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- 射击游戏 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow" data-category="shooter">
+                <a href="./category-template.html?category=shooter">
+                    <div class="aspect-video bg-red-600 flex items-center justify-center">
+                        <svg class="w-16 h-16 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                        </svg>
+                    </div>
+                    <div class="p-4">
+                        <h2 class="text-xl font-bold mb-2">Shooting Games</h2>
+                        <p class="text-gray-600 text-sm">Fight against enemies with various weapons, test your shooting accuracy and tactical thinking.</p>
+                        <div class="mt-4 flex justify-between items-center">
+                            <span class="text-apple-blue font-medium loading-text">Loading...</span>
+                            <span class="text-gray-500 text-sm">Explore →</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <!-- 其他分类 -->
+        <div class="mt-12">
+            <h2 class="text-2xl font-bold mb-6">More Game Categories</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                <a href="./category-template.html?category=arcade" class="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow text-center" data-category="arcade">
+                    <h3 class="font-medium">Arcade Games</h3>
+                    <span class="text-sm text-gray-500 loading-text">Loading...</span>
+                </a>
+                <a href="./category-template.html?category=simulation" class="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow text-center" data-category="simulation">
+                    <h3 class="font-medium">Simulation Games</h3>
+                    <span class="text-sm text-gray-500 loading-text">Loading...</span>
+                </a>
+                <a href="./category-template.html?category=platformer" class="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow text-center" data-category="platformer">
+                    <h3 class="font-medium">Platform Games</h3>
+                    <span class="text-sm text-gray-500 loading-text">Loading...</span>
+                </a>
+                <a href="./category-template.html?category=multiplayer" class="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow text-center" data-category="multiplayer">
+                    <h3 class="font-medium">Multiplayer Games</h3>
+                    <span class="text-sm text-gray-500 loading-text">Loading...</span>
+                </a>
+                <a href="./category-template.html?category=card" class="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow text-center" data-category="card">
+                    <h3 class="font-medium">Card Games</h3>
+                    <span class="text-sm text-gray-500 loading-text">Loading...</span>
+                </a>
+                <a href="./category-template.html?category=educational" class="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow text-center" data-category="educational">
+                    <h3 class="font-medium">Educational Games</h3>
+                    <span class="text-sm text-gray-500 loading-text">Loading...</span>
+                </a>
+                <a href="./category-template.html?category=fighting" class="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow text-center" data-category="fighting">
+                    <h3 class="font-medium">Fighting Games</h3>
+                    <span class="text-sm text-gray-500 loading-text">Loading...</span>
+                </a>
+                <a href="./category-template.html?category=horror" class="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow text-center" data-category="horror">
+                    <h3 class="font-medium">Horror Games</h3>
+                    <span class="text-sm text-gray-500 loading-text">Loading...</span>
+                </a>
+                <a href="./category-template.html?category=casual" class="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow text-center" data-category="casual">
+                    <h3 class="font-medium">Casual Games</h3>
+                    <span class="text-sm text-gray-500 loading-text">Loading...</span>
+                </a>
+                <a href="./category-template.html?category=rhythm" class="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow text-center" data-category="rhythm">
+                    <h3 class="font-medium">Music Rhythm Games</h3>
+                    <span class="text-sm text-gray-500 loading-text">Loading...</span>
+                </a>
+                <a href="./category-template.html?category=sandbox" class="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow text-center" data-category="sandbox">
+                    <h3 class="font-medium">Sandbox Games</h3>
+                    <span class="text-sm text-gray-500 loading-text">Loading...</span>
+                </a>
+                <a href="./category-template.html?category=mmo" class="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow text-center" data-category="mmo">
+                    <h3 class="font-medium">Massively Multiplayer Online Games</h3>
+                    <span class="text-sm text-gray-500 loading-text">Loading...</span>
+                </a>
+            </div>
+        </div>
+    </main>
+    
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">About Gamerence</h3>
+                    <p class="text-gray-400">Gamerence is a platform that offers free online HTML5 games, no download needed, start playing instantly. From action, adventure to puzzle, strategy, all kinds of games are available.</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Navigation</h3>
+                    <ul class="space-y-2">
+                        <li><a href="../index.html" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="./categories.html" class="text-gray-400 hover:text-white">Categories</a></li>
+                        <li><a href="../games/all-games.html" class="text-gray-400 hover:text-white">All Games</a></li>
+                        <li><a href="../games/popular.html" class="text-gray-400 hover:text-white">Popular</a></li>
+                        <li><a href="../games/new.html" class="text-gray-400 hover:text-white">Latest Games</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Popular Categories</h3>
+                    <ul class="space-y-2">
+                        <li><a href="./category-template.html?category=action" class="text-gray-400 hover:text-white">Action Games</a></li>
+                        <li><a href="./category-template.html?category=adventure" class="text-gray-400 hover:text-white">Adventure Games</a></li>
+                        <li><a href="./category-template.html?category=puzzle" class="text-gray-400 hover:text-white">Puzzle Games</a></li>
+                        <li><a href="./category-template.html?category=strategy" class="text-gray-400 hover:text-white">Strategy Games</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between">
+                <p class="text-gray-400">© 2025 Gamerence. All rights reserved.</p>
+                <div class="mt-4 md:mt-0">
+                    <a href="../privacy.html" class="text-gray-400 hover:text-white mr-4">Privacy Policy</a>
+                    <a href="../terms.html" class="text-gray-400 hover:text-white">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Custom JavaScript -->
+    <script src="../js/main.js"></script>
+    <script src="../js/categories.js"></script>
+</body>
+</html> 

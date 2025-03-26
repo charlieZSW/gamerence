@@ -1,0 +1,122 @@
+/* 自定义Tailwind颜色 */
+:root {
+  --apple-blue: #007AFF;
+  --apple-green: #34C759;
+  --apple-indigo: #5856D6;
+  --apple-orange: #FF9500;
+  --apple-pink: #FF2D55;
+  --apple-purple: #AF52DE;
+  --apple-red: #FF3B30;
+  --apple-teal: #5AC8FA;
+  --apple-yellow: #FFCC00;
+  --apple-gray: #8E8E93;
+  --apple-light-gray: #E5E5EA;
+  --apple-dark-gray: #1C1C1E;
+}
+
+.bg-apple-blue { background-color: var(--apple-blue); }
+.bg-apple-green { background-color: var(--apple-green); }
+.bg-apple-indigo { background-color: var(--apple-indigo); }
+.bg-apple-orange { background-color: var(--apple-orange); }
+.bg-apple-pink { background-color: var(--apple-pink); }
+.bg-apple-purple { background-color: var(--apple-purple); }
+.bg-apple-red { background-color: var(--apple-red); }
+.bg-apple-teal { background-color: var(--apple-teal); }
+.bg-apple-yellow { background-color: var(--apple-yellow); }
+.bg-apple-gray { background-color: var(--apple-gray); }
+.bg-apple-light-gray { background-color: var(--apple-light-gray); }
+.bg-apple-dark-gray { background-color: var(--apple-dark-gray); }
+
+.text-apple-blue { color: var(--apple-blue); }
+.text-apple-green { color: var(--apple-green); }
+.text-apple-indigo { color: var(--apple-indigo); }
+.text-apple-orange { color: var(--apple-orange); }
+.text-apple-pink { color: var(--apple-pink); }
+.text-apple-purple { color: var(--apple-purple); }
+.text-apple-red { color: var(--apple-red); }
+.text-apple-teal { color: var(--apple-teal); }
+.text-apple-yellow { color: var(--apple-yellow); }
+.text-apple-gray { color: var(--apple-gray); }
+.text-apple-light-gray { color: var(--apple-light-gray); }
+.text-apple-dark-gray { color: var(--apple-dark-gray); }
+
+.hover\:bg-apple-blue:hover { background-color: var(--apple-blue); }
+.hover\:bg-apple-green:hover { background-color: var(--apple-green); }
+.hover\:bg-blue-600:hover { background-color: #2563eb; }
+.hover\:bg-apple-red\/20:hover { background-color: rgba(255, 59, 48, 0.2); }
+.hover\:bg-apple-green\/20:hover { background-color: rgba(52, 199, 89, 0.2); }
+.hover\:bg-apple-blue\/20:hover { background-color: rgba(0, 122, 255, 0.2); }
+.hover\:bg-apple-orange\/20:hover { background-color: rgba(255, 149, 0, 0.2); }
+
+.hover\:text-apple-light-gray:hover { color: var(--apple-light-gray); }
+.hover\:text-white:hover { color: white; }
+
+.bg-apple-red\/10 { background-color: rgba(255, 59, 48, 0.1); }
+.bg-apple-green\/10 { background-color: rgba(52, 199, 89, 0.1); }
+.bg-apple-blue\/10 { background-color: rgba(0, 122, 255, 0.1); }
+.bg-apple-orange\/10 { background-color: rgba(255, 149, 0, 0.1); }
+
+.border-apple-blue { border-color: var(--apple-blue); }
+.ring-apple-blue { --tw-ring-color: var(--apple-blue); }
+.focus\:ring-apple-blue:focus { --tw-ring-color: var(--apple-blue); }
+
+/* 其他自定义样式 */
+.line-clamp-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.from-black\/70 {
+  --tw-gradient-from: rgba(0, 0, 0, 0.7);
+}
+
+/* 确保过渡效果 */
+.transition-colors {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.transition-opacity {
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.duration-300 {
+  transition-duration: 300ms;
+}
+
+.duration-500 {
+  transition-duration: 500ms;
+}
+
+/* 动画 */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* 渐入动画 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+} 

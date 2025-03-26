@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Category - Gamerence | Free Online HTML5 Games</title>
+    <meta name="description" content="Play various types of free HTML5 games on Gamerence.">
+    <meta name="keywords" content="HTML5 games,free games,online games,casual games">
+    
+    <link rel="canonical" href="https://gamerence.com/categories/category-template.html">
+    
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="../css/tailwind/tailwind.min.css">
+    <link rel="stylesheet" href="../css/tailwind/custom-tailwind.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/main.css">
+    
+    <!-- Alpine.js (Lightweight JavaScript Framework) -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="../images/logo/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../images/logo/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="../images/logo/apple-touch-icon.png">
+</head>
+<body class="bg-gray-100 text-gray-900">
+    <!-- Navigation Bar -->
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <a href="../index.html" class="flex items-center space-x-3">
+                    <img src="../images/logo/抽象动物剪影图标_白底高对比度_狼头轮廓融合游戏手柄元素_耳朵部位融入方向键像素风格_单色深灰轮廓线-removebg-preview.png" alt="Gamerence Logo" class="h-12 w-auto">
+                    <span class="text-2xl font-bold">Gamerence</span>
+                </a>
+                
+                <div class="flex items-center space-x-6">
+                    <nav class="hidden md:flex space-x-6">
+                        <a href="../index.html" class="text-gray-600 hover:text-apple-blue transition-colors">Home</a>
+                        <a href="../categories/categories.html" class="text-gray-600 hover:text-apple-blue transition-colors font-medium">Categories</a>
+                        <a href="../games/all-games.html" class="text-gray-600 hover:text-apple-blue transition-colors">All Games</a>
+                        <a href="../games/popular.html" class="text-gray-600 hover:text-apple-blue transition-colors">Popular Games</a>
+                        <a href="../games/new.html" class="text-gray-600 hover:text-apple-blue transition-colors">New Games</a>
+                    </nav>
+                    
+                    <div class="relative" x-data="{ open: false }">
+                        <button @click="open = !open" class="md:hidden text-gray-500 hover:text-gray-600 focus:outline-none">
+                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                            </svg>
+                        </button>
+                        
+                        <div x-show="open" @click.away="open = false" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10" style="display: none;">
+                            <a href="../index.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Home</a>
+                            <a href="../categories/categories.html" class="block px-4 py-2 text-gray-800 bg-gray-100">Categories</a>
+                            <a href="../games/all-games.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">All Games</a>
+                            <a href="../games/popular.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Popular Games</a>
+                            <a href="../games/new.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">New Games</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="mb-8">
+            <div class="flex items-center mb-4">
+                <a href="../categories/categories.html" class="text-apple-blue hover:text-blue-700">All Categories</a>
+                <span class="mx-2 text-gray-400">/</span>
+                <span class="text-gray-800" id="category-breadcrumb">Loading...</span>
+            </div>
+            <div id="category-header" class="bg-gradient-to-r from-blue-500 to-blue-600 p-6 rounded-lg mb-6 text-white">
+                <div class="flex items-center space-x-4">
+                    <div id="category-icon" class="flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="text-3xl font-bold mb-2" id="category-title">Loading...</h1>
+                        <p class="text-white text-opacity-90" id="category-description">Loading category information...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Game List -->
+        <div class="mb-8">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-2xl font-bold">Category Games</h2>
+                <div class="relative">
+                    <select id="sort-select" class="bg-white border border-gray-300 rounded-md px-4 py-2 pr-8 appearance-none focus:outline-none focus:ring-2 focus:ring-apple-blue focus:border-transparent">
+                        <option value="newest">Latest Release</option>
+                        <option value="popular">Most Popular</option>
+                        <option value="rating">Highest Rated</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="games-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Games will be dynamically loaded via JavaScript -->
+                
+                <!-- Loading State -->
+                <div id="loading" class="col-span-full flex justify-center py-12">
+                    <svg class="animate-spin h-8 w-8 text-apple-blue" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                </div>
+                
+                <!-- No Results State -->
+                <div id="no-results" class="col-span-full py-12 text-center hidden">
+                    <div class="mx-auto w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center mb-4">
+                        <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-medium text-gray-900" id="no-results-title">No Games Found</h3>
+                    <p class="mt-1 text-gray-500">Please check back later, we regularly update our game content.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Pagination Controls -->
+        <div id="pagination" class="mt-8 flex justify-center hidden">
+            <div class="flex space-x-2">
+                <button id="prev-page" class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-700 hover:bg-apple-blue hover:text-white transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <div id="page-numbers" class="flex space-x-2">
+                    <!-- Page numbers will be dynamically generated by JavaScript -->
+                </div>
+                <button id="next-page" class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-700 hover:bg-apple-blue hover:text-white transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">About Gamerence</h3>
+                    <p class="text-gray-400">Gamerence is a platform that offers free online HTML5 games, no download needed, start playing instantly. From action, adventure to puzzle, strategy, all kinds of games are available.</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Navigation</h3>
+                    <ul class="space-y-2">
+                        <li><a href="../index.html" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="../categories/categories.html" class="text-gray-400 hover:text-white">Categories</a></li>
+                        <li><a href="../games/all-games.html" class="text-gray-400 hover:text-white">All Games</a></li>
+                        <li><a href="../games/popular.html" class="text-gray-400 hover:text-white">Popular</a></li>
+                        <li><a href="../games/new.html" class="text-gray-400 hover:text-white">Latest Games</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Popular Categories</h3>
+                    <ul class="space-y-2">
+                        <li><a href="../categories/category-template.html?category=action" class="text-gray-400 hover:text-white">Action Games</a></li>
+                        <li><a href="../categories/category-template.html?category=adventure" class="text-gray-400 hover:text-white">Adventure Games</a></li>
+                        <li><a href="../categories/category-template.html?category=puzzle" class="text-gray-400 hover:text-white">Puzzle Games</a></li>
+                        <li><a href="../categories/category-template.html?category=strategy" class="text-gray-400 hover:text-white">Strategy Games</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between">
+                <p class="text-gray-400">© 2025 Gamerence. All rights reserved.</p>
+                <div class="mt-4 md:mt-0">
+                    <a href="../privacy.html" class="text-gray-400 hover:text-white mr-4">Privacy Policy</a>
+                    <a href="../terms.html" class="text-gray-400 hover:text-white">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../js/main.js"></script>
+    <script>
+        // Game Category Definitions
+        const categoryDefinitions = {
+            "action": {
+                "name": "Action Games",
+                "description": "Fast-paced action games that challenge your reaction speed and hand-eye coordination.",
+                "color": "from-red-500 to-red-600",
+                "icon": '<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>'
+            },
+            "adventure": {
+                "name": "Adventure Games",
+                "description": "Explore mysterious worlds, solve puzzles, and experience engaging storylines.",
+                "color": "from-green-500 to-green-600",
+                "icon": '<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>'
+            },
+            "puzzle": {
+                "name": "Puzzle Games",
+                "description": "Exercise your brain, challenge your intelligence, and solve various fun puzzles and puzzles.",
+                "color": "from-purple-500 to-purple-600",
+                "icon": '<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" /></svg>'
+            },
+            "strategy": {
+                "name": "Strategy Games",
+                "description": "Requires strategic thinking and planning, challenging players' intelligence and decision-making abilities.",
+                "color": "from-yellow-500 to-yellow-600",
+                "icon": '<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" /></svg>'
+            },
+            "sports": {
+                "name": "Sports Games",
+                "description": "Simulate various sports, showcase your athletic abilities, and challenge high scores.",
+                "color": "from-green-500 to-green-600",
+                "icon": '<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>'
+            },
+            "racing": {
+                "name": "Racing Games",
+                "description": "Feel the speed and passion, challenge various tracks, and experience driving fun.",
+                "color": "from-blue-500 to-blue-600",
+                "icon": '<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /></svg>'
+            },
+            "rpg": {
+                "name": "Role-Playing Games",
+                "description": "Play different roles, experience engaging storylines, and improve character abilities.",
+                "color": "from-indigo-500 to-indigo-600",
+                "icon": '<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>'
+            },
+            "shooter": {
+                "name": "Shooting Games",
+                "description": "The main gameplay is shooting, testing your aiming and reaction abilities.",
+                "color": "from-red-500 to-red-600",
+                "icon": '<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" /></svg>'
+            },
+            "simulation": {
+                "name": "Simulation Games",
+                "description": "Simulate various activities and systems in reality, experience different lives and careers.",
+                "color": "from-blue-400 to-blue-500",
+                "icon": '<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>'
+            },
+            "arcade": {
+                "name": "Arcade Games",
+                "description": "Classic arcade style games, simple direct gameplay, challenging players' skills and reactions.",
+                "color": "from-pink-500 to-pink-600",
+                "icon": '<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>'
+            },
+            "card": {
+                "name": "Card Games",
+                "description": "Games with cards as the core element, requiring strategy and luck.",
+                "color": "from-orange-500 to-orange-600",
+                "icon": '<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" /></svg>'
+            },
+            "educational": {
+                "name": "Educational Games",
+                "description": "Games that teach and have fun, learning knowledge and skills in the game process.",
+                "color": "from-teal-500 to-teal-600",
+                "icon": '<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>'
+            },
+            "fighting": {
+                "name": "Fighting Games",
+                "description": "Focus on close combat between characters, challenge players' skills and combo abilities.",
+                "color": "from-red-600 to-red-700",
+                "icon": '<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>'
+            },
+            "horror": {
+                "name": "Horror Games",
+                "description": "Create a tense and scary atmosphere, allowing players to survive in a creepy environment.",
+                "color": "from-gray-700 to-gray-800",
+                "icon": '<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>'
+            },
+            "platformer": {
+                "name": "Platform Games",
+                "description": "Control characters to jump, run on various platforms, collect items, and avoid obstacles.",
+                "color": "from-blue-500 to-blue-600",
+                "icon": '<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" /></svg>'
+            },
+            "casual": {
+                "name": "Casual Games",
+                "description": "Simple and easy-to-play games, suitable for short-time play and relaxation.",
+                "color": "from-green-400 to-green-500",
+                "icon": '<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>'
+            },
+            "rhythm": {
+                "name": "Music Rhythm Games",
+                "description": "Operate according to music rhythm, challenge players' rhythm and coordination abilities.",
+                "color": "from-purple-400 to-purple-500",
+                "icon": '<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" /></svg>'
+            },
+            "sandbox": {
+                "name": "Sandbox Games",
+                "description": "Provide open worlds and creation tools, allowing players to freely explore and build.",
+                "color": "from-yellow-400 to-yellow-500",
+                "icon": '<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>'
+            },
+            "mmo": {
+                "name": "Massively Multiplayer Online Games",
+                "description": "Large-scale multiplayer games, allowing players to interact and adventure in a virtual world.",
+                "color": "from-indigo-400 to-indigo-500",
+                "icon": '<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>'
+            },
+            "multiplayer": {
+                "name": "Multiplayer Games",
+                "description": "Support multiple players to play at the same time, focusing on cooperative or competitive social experiences.",
+                "color": "from-blue-400 to-blue-500",
+                "icon": '<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>'
+            },
+            "default": {
+                "name": "Game Category",
+                "description": "Browse our carefully selected game categories",
+                "color": "from-blue-500 to-blue-600",
+                "icon": '<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" /></svg>'
+            }
+        };
+        
+        // Global Variables
+        let allGames = [];
+        let categoryGames = [];
+        let currentCategory = '';
+        let currentPage = 1;
+        let gamesPerPage = 12;
+        let sortType = 'newest';
+        
+        // Get URL Parameters
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            const results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+        
+        // Page Load Initialization
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get Category Parameter from URL
+            currentCategory = getUrlParameter('category') || 'action';
+            console.log('Current Category:', currentCategory);
+            
+            // Initialize Category Information
+            initCategoryInfo(currentCategory);
+            
+            // Load Game Data
+            loadGames();
+            
+            // Initialize Sorting Function
+            document.getElementById('sort-select').addEventListener('change', function() {
+                sortType = this.value;
+                console.log('Sorting Method Changed to:', sortType);
+                sortAndDisplayGames();
+            });
+            
+            // Initialize Pagination Event Listener
+            document.getElementById('prev-page').addEventListener('click', function() {
+                if (currentPage > 1) {
+                    currentPage--;
+                    displayGames(categoryGames);
+                }
+            });
+            
+            document.getElementById('next-page').addEventListener('click', function() {
+                const maxPage = Math.ceil(categoryGames.length / gamesPerPage);
+                if (currentPage < maxPage) {
+                    currentPage++;
+                    displayGames(categoryGames);
+                }
+            });
+        });
+        
+        // Initialize Category Information
+        function initCategoryInfo(categoryId) {
+            const categoryInfo = categoryDefinitions[categoryId] || categoryDefinitions.default;
+            
+            // Update Page Title
+            document.title = `${categoryInfo.name} - Gamerence | Free Online HTML5 Games`;
+            
+            // Update Breadcrumbs
+            document.getElementById('category-breadcrumb').textContent = categoryInfo.name;
+            
+            // Update Category Title and Description
+            document.getElementById('category-title').textContent = categoryInfo.name;
+            document.getElementById('category-description').textContent = categoryInfo.description;
+            
+            // Update Category Icon
+            document.getElementById('category-icon').innerHTML = categoryInfo.icon;
+            
+            // Update Category Color
+            const headerElement = document.getElementById('category-header');
+            headerElement.classList.remove('from-blue-500', 'to-blue-600');
+            headerElement.classList.add(...categoryInfo.color.split(' '));
+            
+            // Update No Results Prompt
+            document.getElementById('no-results-title').textContent = `No ${categoryInfo.name} Found`;
+        }
+        
+        // Load Game Data
+        async function loadGames() {
+            try {
+                const response = await fetch('../data/games.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP Error: ${response.status}`);
+                }
+                
+                allGames = await response.json();
+                console.log('Game Data Loaded Successfully, Total Game Count:', allGames.length);
+                
+                // Filter Games by Category
+                filterGamesByCategory();
+                
+                // Sort and Display Games
+                sortAndDisplayGames();
+            } catch (error) {
+                console.error('Error Loading Game Data:', error);
+                document.getElementById('loading').classList.add('hidden');
+                
+                // Display Error Information
+                const noResults = document.getElementById('no-results');
+                noResults.classList.remove('hidden');
+                noResults.querySelector('h3').textContent = 'Load Failed';
+                noResults.querySelector('p').textContent = 'Unable to Load Game Data, Please Try Again Later.';
+            }
+        }
+        
+        // Filter Games by Category
+        function filterGamesByCategory() {
+            categoryGames = allGames.filter(game => {
+                if (!game.category) return false;
+                
+                const category = game.category.toLowerCase();
+                return category === currentCategory;
+            });
+            
+            console.log(`Category ${currentCategory} Filter Result:`, categoryGames.length, 'Games');
+        }
+        
+        // Sort and Display Games
+        function sortAndDisplayGames() {
+            let sortedGames = [...categoryGames];
+            
+            // Sort Games Based on Sorting Method
+            switch(sortType) {
+                case 'newest':
+                    sortedGames.sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded));
+                    break;
+                case 'popular':
+                    sortedGames.sort((a, b) => (b.plays || 0) - (a.plays || 0));
+                    break;
+                case 'rating':
+                    sortedGames.sort((a, b) => (b.rating || 0) - (a.rating || 0));
+                    break;
+            }
+            
+            // Reset Pagination
+            currentPage = 1;
+            
+            // Display Games
+            displayGames(sortedGames);
+        }
+        
+        // Display Games
+        function displayGames(games) {
+            // Hide Loading Indicator
+            document.getElementById('loading').classList.add('hidden');
+            
+            const container = document.getElementById('games-container');
+            const pagination = document.getElementById('pagination');
+            
+            // Clear Container Content Except Loading Indicator and "No Results"
+            Array.from(container.children).forEach(child => {
+                if (child.id !== 'loading' && child.id !== 'no-results') {
+                    container.removeChild(child);
+                }
+            });
+            
+            if (games.length === 0) {
+                // Display No Results State
+                document.getElementById('no-results').classList.remove('hidden');
+                pagination.classList.add('hidden');
+                return;
+            }
+            
+            // Hide No Results State
+            document.getElementById('no-results').classList.add('hidden');
+            
+            // Calculate Current Page Games
+            const startIndex = (currentPage - 1) * gamesPerPage;
+            const endIndex = Math.min(startIndex + gamesPerPage, games.length);
+            const currentPageGames = games.slice(startIndex, endIndex);
+            
+            // Create Game Cards
+            currentPageGames.forEach(game => {
+                const card = createGameCard(game);
+                container.appendChild(card);
+            });
+            
+            // Update Pagination
+            updatePagination(games.length);
+        }
+        
+        // Create Game Cards
+        function createGameCard(game) {
+            const card = document.createElement('div');
+            card.className = 'bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow game-card';
+            
+            const isNew = isNewGame(game.dateAdded);
+            
+            card.innerHTML = `
+                <a href="../games/play.html?id=${game.id}">
+                    <div class="relative">
+                        <img src="${game.image}" alt="${game.title}" class="w-full object-cover h-40">
+                        ${isNew ? '<div class="absolute top-0 right-0 bg-green-500 text-white text-xs px-2 py-1 m-2 rounded">New Release</div>' : ''}
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-gray-900 mb-1 line-clamp-1">${game.title}</h3>
+                        <div class="flex text-xs text-gray-500 mt-1 flex-wrap">
+                            <span class="bg-gray-200 text-gray-700 rounded-full px-2 py-0.5 text-xs mr-1 mb-1">${game.category}</span>
+                        </div>
+                        <p class="text-gray-600 text-sm line-clamp-2">${game.description || ''}</p>
+                    </div>
+                </a>
+            `;
+            
+            return card;
+        }
+        
+        // Update Pagination
+        function updatePagination(totalGames) {
+            const pagination = document.getElementById('pagination');
+            const pageNumbers = document.getElementById('page-numbers');
+            const maxPage = Math.ceil(totalGames / gamesPerPage);
+            
+            // Clear Page Numbers
+            pageNumbers.innerHTML = '';
+            
+            // If Only One Page, Hide Pagination
+            if (maxPage <= 1) {
+                pagination.classList.add('hidden');
+                return;
+            }
+            
+            // Display Pagination
+            pagination.classList.remove('hidden');
+            
+            // Generate Page Number Buttons
+            const maxVisiblePages = 5;
+            let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+            let endPage = Math.min(maxPage, startPage + maxVisiblePages - 1);
+            
+            if (endPage - startPage + 1 < maxVisiblePages && startPage > 1) {
+                startPage = Math.max(1, endPage - maxVisiblePages + 1);
+            }
+            
+            // Add First Page Button (If Needed)
+            if (startPage > 1) {
+                addPageButton(1, pageNumbers);
+                if (startPage > 2) {
+                    // Add Ellipsis
+                    const ellipsis = document.createElement('span');
+                    ellipsis.className = 'w-10 h-10 flex items-center justify-center';
+                    ellipsis.textContent = '...';
+                    pageNumbers.appendChild(ellipsis);
+                }
+            }
+            
+            // Add Middle Page Numbers
+            for (let i = startPage; i <= endPage; i++) {
+                addPageButton(i, pageNumbers);
+            }
+            
+            // Add Last Page Button (If Needed)
+            if (endPage < maxPage) {
+                if (endPage < maxPage - 1) {
+                    // Add Ellipsis
+                    const ellipsis = document.createElement('span');
+                    ellipsis.className = 'w-10 h-10 flex items-center justify-center';
+                    ellipsis.textContent = '...';
+                    pageNumbers.appendChild(ellipsis);
+                }
+                addPageButton(maxPage, pageNumbers);
+            }
+            
+            // Disable/Enable Previous/Next Buttons
+            document.getElementById('prev-page').classList.toggle('opacity-50', currentPage === 1);
+            document.getElementById('next-page').classList.toggle('opacity-50', currentPage === maxPage);
+        }
+        
+        // Add Page Number Button
+        function addPageButton(pageNum, container) {
+            const button = document.createElement('button');
+            button.className = pageNum === currentPage 
+                ? 'w-10 h-10 rounded-full bg-apple-blue text-white flex items-center justify-center' 
+                : 'w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-700 hover:bg-apple-blue hover:text-white transition-colors';
+            button.textContent = pageNum;
+            button.addEventListener('click', function() {
+                if (pageNum !== currentPage) {
+                    currentPage = pageNum;
+                    displayGames(categoryGames);
+                }
+            });
+            container.appendChild(button);
+        }
+        
+        // Determine if Game is New Release (Within 30 Days)
+        function isNewGame(dateAdded) {
+            if (!dateAdded) return false;
+            
+            const addedDate = new Date(dateAdded);
+            const currentDate = new Date();
+            const diffTime = Math.abs(currentDate - addedDate);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            
+            return diffDays <= 30;
+        }
+        
+        // Format Rating to Stars
+        function formatRating(rating) {
+            if (!rating || isNaN(rating)) return '';
+            
+            // Round to nearest 0.5
+            const roundedRating = Math.round(rating * 2) / 2;
+            let stars = '';
+            
+            // Add full stars
+            for (let i = 1; i <= Math.floor(roundedRating); i++) {
+                stars += '<svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>';
+            }
+            
+            // Add half star if needed
+            if (roundedRating % 1 !== 0) {
+                stars += '<svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z" fill="url(#half)"></path><defs><linearGradient id="half" x1="0" x2="100%" y1="0" y2="0"><stop offset="50%" stop-color="currentColor"></stop><stop offset="50%" stop-color="transparent" stop-opacity="0"></stop></linearGradient></defs></svg>';
+            }
+            
+            // Add empty stars
+            const emptyStars = 5 - Math.ceil(roundedRating);
+            for (let i = 0; i < emptyStars; i++) {
+                stars += '<svg class="w-4 h-4 text-gray-300 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>';
+            }
+            
+            return stars;
+        }
+    </script>
+</body>
+</html> 

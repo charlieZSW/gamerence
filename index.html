@@ -3,326 +3,277 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monster Survivors - Survive Against Endless Waves of Monsters | Gamerence</title>
-    <meta name="description" content="Play Monster Survivors online for free! Battle against endless waves of monsters in this thrilling survival game. Upgrade your character and survive as long as possible.">
-    <meta name="keywords" content="Monster Survivors, survival game, online game, free game, monster battle, wave survival">
-    <link rel="canonical" href="https://gamerence.com/monster-survivors">
-    
-    <!-- Open Graph / Social Media Meta Tags -->
-    <meta property="og:title" content="Monster Survivors - Survive Against Endless Waves of Monsters">
-    <meta property="og:description" content="Battle against endless waves of monsters in this thrilling survival game. Upgrade your character and survive as long as possible.">
-    <meta property="og:url" content="https://gamerence.com/monster-survivors">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://gamerence.com/images/monster-survivors-thumbnail.jpg">
-    
-    <!-- Twitter Card Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Monster Survivors - Survive Against Endless Waves of Monsters">
-    <meta name="twitter:description" content="Battle against endless waves of monsters in this thrilling survival game. Upgrade your character and survive as long as possible.">
-    <meta name="twitter:image" content="https://gamerence.com/images/monster-survivors-thumbnail.jpg">
+    <title>Gamerence - Free Online HTML5 Game Platform</title>
+    <meta name="description" content="Gamerence is a platform that offers free online HTML5 games, no download needed, start playing instantly. From action, adventure to puzzle, strategy, all kinds of games are available.">
+    <meta name="keywords" content="html5 games, free games, online games, web games, casual games, action games, puzzle games">
+    <link rel="canonical" href="https://gamerence.com/">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="favicon.ico">
+    <link rel="icon" href="./images/logo/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="./images/logo/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="./images/logo/apple-touch-icon.png">
     
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="./css/tailwind/tailwind.min.css">
+    <link rel="stylesheet" href="./css/tailwind/custom-tailwind.css">
     
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'apple-blue': '#007AFF',
-                        'apple-green': '#34C759',
-                        'apple-indigo': '#5856D6',
-                        'apple-orange': '#FF9500',
-                        'apple-pink': '#FF2D55',
-                        'apple-purple': '#AF52DE',
-                        'apple-red': '#FF3B30',
-                        'apple-teal': '#5AC8FA',
-                        'apple-yellow': '#FFCC00',
-                        'apple-gray': '#8E8E93',
-                        'apple-light-gray': '#E5E5EA',
-                        'apple-dark-gray': '#1C1C1E',
-                    }
-                }
-            }
-        }
-    </script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/main.css">
     
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        
-        .game-container {
-            aspect-ratio: 16/9;
-            max-height: 70vh;
-        }
-        
-        @media (max-width: 768px) {
-            .game-container {
-                aspect-ratio: 16/9;
-                height: 50vh;
-            }
-        }
-    </style>
+    <!-- Alpine.js (Lightweight JavaScript Framework) -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-6CLTLDQXDR"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-6CLTLDQXDR');
-</script>
-
-<body class="bg-white dark:bg-apple-dark-gray text-gray-800 dark:text-white">
-    <!-- Navigation -->
-    <header class="bg-apple-blue text-white shadow-md">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="https://gamerence.com" class="text-xl font-bold">Gamerence</a>
-            <nav>
-                <ul class="flex space-x-4">
-                    <li><a href="https://gamerence.com" class="hover:text-apple-light-gray transition-colors">Home</a></li>
-                    <li><a href="https://gamerence.com/games" class="hover:text-apple-light-gray transition-colors">Games</a></li>
-                    <li><a href="https://gamerence.com/about" class="hover:text-apple-light-gray transition-colors">About</a></li>
-                </ul>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Navigation Bar -->
+    <header class="bg-white shadow-md py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <a href="./index.html" class="flex items-center space-x-3">
+                <img src="./images/logo/抽象动物剪影图标_白底高对比度_狼头轮廓融合游戏手柄元素_耳朵部位融入方向键像素风格_单色深灰轮廓线-removebg-preview.png" alt="Gamerence Logo" class="h-12 w-auto">
+                <span class="text-2xl font-bold text-apple-blue">Gamerence</span>
+            </a>
+            
+            <!-- Navigation Menu -->
+            <nav class="hidden md:flex space-x-6">
+                <a href="./index.html" class="text-gray-600 hover:text-apple-blue transition-colors font-medium">Home</a>
+                <a href="./categories/categories.html" class="text-gray-600 hover:text-apple-blue transition-colors">Categories</a>
+                <a href="./games/all-games.html" class="text-gray-600 hover:text-apple-blue transition-colors">All Games</a>
+                <a href="./games/popular.html" class="text-gray-600 hover:text-apple-blue transition-colors">Popular Games</a>
+                <a href="./games/new.html" class="text-gray-600 hover:text-apple-blue transition-colors">New Games</a>
             </nav>
+            
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden" x-data="{ open: false }">
+                <button @click="open = !open" class="text-gray-500 hover:text-apple-blue">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+                
+                <!-- Mobile Dropdown Menu -->
+                <div x-show="open" @click.away="open = false" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
+                    <a href="./index.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Home</a>
+                    <a href="./categories/categories.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Categories</a>
+                    <a href="./games/all-games.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">All Games</a>
+                    <a href="./games/popular.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Popular Games</a>
+                    <a href="./games/new.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">New Games</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Search Bar -->
+        <div class="container mx-auto mt-4 px-4">
+            <div class="relative" x-data="{ query: '' }">
+                <input 
+                    type="text" 
+                    placeholder="Search games..." 
+                    class="w-full px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-apple-blue focus:border-transparent"
+                    x-model="query"
+                    @keydown.enter="searchGames(query)"
+                >
+                <button 
+                    class="absolute right-0 top-0 mt-2 mr-4 text-apple-blue"
+                    @click="searchGames(query)"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+            </div>
         </div>
     </header>
 
     <!-- Main Content -->
     <main class="container mx-auto px-4 py-8">
-        <!-- Hero Section -->
-        <section class="mb-12">
-            <h1 class="text-4xl md:text-5xl font-bold text-apple-blue mb-4">Monster Survivors</h1>
-            <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-6">Survive against endless waves of monsters in this thrilling action-packed adventure!</p>
-            
-            <!-- Game Container -->
-            <div class="w-full rounded-lg overflow-hidden shadow-xl bg-apple-light-gray dark:bg-gray-700 mb-8">
-                <div class="game-container w-full">
-                    <iframe 
-                        src="https://cloud.onlinegames.io/games/2025/unity/monster-survivors/index-og.html" 
-                        class="w-full h-full"
-                        frameborder="0" 
-                        allowfullscreen
-                        loading="lazy"
-                        title="Monster Survivors Game"
-                    ></iframe>
-                </div>
-            </div>
-            
-            <!-- Game Controls Instructions -->
-            <div class="bg-apple-light-gray dark:bg-gray-700 p-4 rounded-lg mb-8">
-                <h2 class="text-2xl font-semibold text-apple-blue mb-3">How to Play</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <h3 class="text-lg font-medium mb-2">Controls:</h3>
-                        <ul class="list-disc pl-5 space-y-1">
-                            <li>Move: WASD or Arrow Keys</li>
-                            <li>Attack: Automatic</li>
-                            <li>Choose Upgrades: Mouse Click</li>
-                            <li>Pause Game: ESC</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-medium mb-2">Objective:</h3>
-                        <p>Survive as long as possible against waves of monsters. Collect experience points to level up and choose powerful upgrades to enhance your character's abilities.</p>
-                    </div>
-                </div>
+        <!-- Debug Panel -->
+        <section class="mb-6 bg-blue-50 p-4 rounded-lg hidden" id="debug-panel">
+            <h2 class="text-lg font-bold text-blue-800 mb-2">Loading Status</h2>
+            <div class="text-sm text-blue-700" id="debug-info">
+                Initializing page...
             </div>
         </section>
-
-        <!-- Game Description -->
-        <section class="mb-12">
-            <h2 class="text-3xl font-bold text-apple-blue mb-4">About Monster Survivors</h2>
+        
+        <!-- Error Container -->
+        <div id="error-container" class="hidden mb-6"></div>
+        
+        <!-- Featured Games Carousel -->
+        <section class="mb-12" x-data="{ activeSlide: 0 }">
+            <h2 class="sr-only">Featured Games</h2>
             
-            <div class="prose max-w-none dark:prose-invert">
-                <p class="mb-4">Monster Survivors is an exciting survival action game where you face endless waves of monsters. Your goal is simple: survive as long as possible while defeating as many monsters as you can.</p>
+            <div class="relative rounded-lg overflow-hidden shadow-xl h-64 md:h-96">
+                <!-- Game carousel items will be dynamically loaded by JavaScript -->
                 
-                <p class="mb-4">As you progress through the game, you'll face increasingly difficult enemies and bosses. Each defeated monster drops experience points that allow you to level up and choose from various upgrades, weapons, and abilities to enhance your character.</p>
-                
-                <p class="mb-4">The game features a dynamic difficulty system that ensures each playthrough is challenging and unique. With randomized enemy spawns and upgrade options, no two games will ever be the same!</p>
-            </div>
-            
-            <div class="mt-8">
-                <h2 class="text-3xl font-bold text-apple-blue mb-4">Game Features</h2>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
-                    <div class="bg-apple-light-gray dark:bg-gray-700 p-5 rounded-lg">
-                        <h3 class="text-xl font-semibold text-apple-red mb-2">Character Progression</h3>
-                        <p>Level up your character and choose from a variety of upgrades to create unique builds. Experiment with different combinations of weapons and passive abilities to find the most effective strategy.</p>
-                    </div>
-                    
-                    <div class="bg-apple-light-gray dark:bg-gray-700 p-5 rounded-lg">
-                        <h3 class="text-xl font-semibold text-apple-green mb-2">Monster Variety</h3>
-                        <p>Face off against dozens of different monster types, each with unique behaviors and attack patterns. From basic minions to challenging elite monsters and epic bosses!</p>
-                    </div>
-                    
-                    <div class="bg-apple-light-gray dark:bg-gray-700 p-5 rounded-lg">
-                        <h3 class="text-xl font-semibold text-apple-purple mb-2">Dynamic Environments</h3>
-                        <p>Explore various environments that change as you progress through the game. Each area presents new challenges and opportunities for strategic gameplay.</p>
-                    </div>
-                    
-                    <div class="bg-apple-light-gray dark:bg-gray-700 p-5 rounded-lg">
-                        <h3 class="text-xl font-semibold text-apple-orange mb-2">Leaderboards</h3>
-                        <p>Compete with players from around the world to achieve the highest score and longest survival time. Can you make it to the top of the leaderboard?</p>
-                    </div>
+                <!-- Carousel indicators will be dynamically loaded by JavaScript -->
+                <div class="absolute bottom-4 right-4 flex space-x-2 z-20">
+                    <!-- Indicators will be dynamically loaded by JavaScript -->
                 </div>
             </div>
         </section>
         
-        <!-- Tips & Strategies -->
+        <!-- Game Categories Section -->
         <section class="mb-12">
-            <h2 class="text-3xl font-bold text-apple-blue mb-4">Tips & Strategies</h2>
+            <h2 class="text-2xl font-bold mb-6">Game Categories</h2>
             
-            <div class="bg-apple-light-gray dark:bg-gray-700 p-6 rounded-lg">
-                <ul class="space-y-4">
-                    <li class="flex items-start">
-                        <span class="text-apple-green font-bold mr-2">•</span>
-                        <p><strong>Movement is key:</strong> Never stop moving and always keep a safe distance from enemy groups.</p>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-apple-green font-bold mr-2">•</span>
-                        <p><strong>Focus on a build:</strong> Choose upgrades that complement each other rather than picking random abilities.</p>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-apple-green font-bold mr-2">•</span>
-                        <p><strong>Prioritize area damage:</strong> Weapons that can hit multiple enemies at once are often more valuable than single-target weapons.</p>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-apple-green font-bold mr-2">•</span>
-                        <p><strong>Collect all experience:</strong> Make sure to pick up all experience orbs dropped by defeated monsters to level up faster.</p>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-apple-green font-bold mr-2">•</span>
-                        <p><strong>Watch for treasure chests:</strong> These can contain valuable items that provide significant advantages.</p>
-                    </li>
-                </ul>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Action Games -->
+                <a href="./categories/category-template.html?category=action" class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow" data-category="action">
+                    <div class="aspect-video bg-gradient-to-r from-red-500 to-red-600 flex items-center justify-center">
+                        <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold mb-2">Action Games</h3>
+                        <p class="text-gray-600 text-sm">Fast-paced action games, testing player reaction speed and hand-eye coordination.</p>
+                        <div class="mt-4 flex justify-between items-center">
+                            <span class="text-apple-blue font-medium">12 games</span>
+                            <span class="text-gray-500 text-sm">Explore →</span>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Puzzle Games -->
+                <a href="./categories/category-template.html?category=puzzle" class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow" data-category="puzzle">
+                    <div class="aspect-video bg-gradient-to-r from-purple-500 to-purple-600 flex items-center justify-center">
+                        <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
+                        </svg>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold mb-2">Puzzle Games</h3>
+                        <p class="text-gray-600 text-sm">Exercise your brain, challenge your intelligence, and solve various fun puzzles and problems.</p>
+                        <div class="mt-4 flex justify-between items-center">
+                            <span class="text-apple-blue font-medium">56 games</span>
+                            <span class="text-gray-500 text-sm">Explore →</span>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Strategy Games -->
+                <a href="./categories/category-template.html?category=strategy" class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow" data-category="strategy">
+                    <div class="aspect-video bg-gradient-to-r from-yellow-500 to-yellow-600 flex items-center justify-center">
+                        <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                        </svg>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold mb-2">Strategy Games</h3>
+                        <p class="text-gray-600 text-sm">Requires strategic thinking and planning, testing player's intelligence and decision-making.</p>
+                        <div class="mt-4 flex justify-between items-center">
+                            <span class="text-apple-blue font-medium">29 games</span>
+                            <span class="text-gray-500 text-sm">Explore →</span>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Sports Games -->
+                <a href="./categories/category-template.html?category=sports" class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow" data-category="sports">
+                    <div class="aspect-video bg-gradient-to-r from-green-500 to-green-600 flex items-center justify-center">
+                        <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                        </svg>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold mb-2">Sports Games</h3>
+                        <p class="text-gray-600 text-sm">Simulate various sports, showcase your athletic talent, and challenge high scores.</p>
+                        <div class="mt-4 flex justify-between items-center">
+                            <span class="text-apple-blue font-medium">32 games</span>
+                            <span class="text-gray-500 text-sm">Explore →</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="text-center mt-8">
+                <a href="./categories/categories.html" class="inline-flex items-center bg-apple-blue hover:bg-blue-600 text-white py-2 px-6 rounded-lg transition-colors">
+                    View All Categories
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                </a>
             </div>
         </section>
         
-        <!-- Similar Games -->
+        <!-- Popular Games Section -->
         <section class="mb-12">
-            <h2 class="text-3xl font-bold text-apple-blue mb-4">Similar Games You Might Enjoy</h2>
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold">Popular Games</h2>
+                <a href="./games/popular.html" class="inline-flex items-center text-apple-blue hover:text-blue-700">
+                    View More
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                </a>
+            </div>
             
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="bg-apple-light-gray dark:bg-gray-700 rounded-lg overflow-hidden shadow-md">
-                    <div class="p-4">
-                        <h3 class="text-xl font-semibold mb-2">Vampire Survivors</h3>
-                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">A roguelike time survival game with minimalist gameplay and tons of upgrade options.</p>
-                        <a href="https://gamerence.com/vampire-survivors" class="text-apple-blue hover:underline">Play Now</a>
-                    </div>
-                </div>
-                
-                <div class="bg-apple-light-gray dark:bg-gray-700 rounded-lg overflow-hidden shadow-md">
-                    <div class="p-4">
-                        <h3 class="text-xl font-semibold mb-2">20 Minutes Till Dawn</h3>
-                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">A roguelite survival shooter with bullet-hell elements and a dark atmosphere.</p>
-                        <a href="https://gamerence.com/20-minutes-till-dawn" class="text-apple-blue hover:underline">Play Now</a>
-                    </div>
-                </div>
-                
-                <div class="bg-apple-light-gray dark:bg-gray-700 rounded-lg overflow-hidden shadow-md">
-                    <div class="p-4">
-                        <h3 class="text-xl font-semibold mb-2">Magic Survival</h3>
-                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">Combine magical elements to create powerful spells and survive against monster hordes.</p>
-                        <a href="https://gamerence.com/magic-survival" class="text-apple-blue hover:underline">Play Now</a>
-                    </div>
-                </div>
+            <!-- Game Card Container - Will be dynamically filled by JavaScript -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Game Cards will be dynamically loaded by JavaScript -->
             </div>
         </section>
         
-        <!-- FAQ Section -->
+        <!-- Latest Games Section -->
         <section class="mb-12">
-            <h2 class="text-3xl font-bold text-apple-blue mb-4">Frequently Asked Questions</h2>
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold">Latest Games</h2>
+                <a href="./games/new.html" class="inline-flex items-center text-apple-blue hover:text-blue-700">
+                    View More
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                </a>
+            </div>
             
-            <div class="space-y-4">
-                <div class="bg-apple-light-gray dark:bg-gray-700 p-4 rounded-lg">
-                    <h3 class="text-xl font-semibold mb-2">Is Monster Survivors free to play?</h3>
-                    <p>Yes, Monster Survivors is completely free to play in your web browser. No downloads or installations required!</p>
-                </div>
-                
-                <div class="bg-apple-light-gray dark:bg-gray-700 p-4 rounded-lg">
-                    <h3 class="text-xl font-semibold mb-2">Can I play Monster Survivors on mobile devices?</h3>
-                    <p>Yes, Monster Survivors is optimized for both desktop and mobile play. The controls automatically adapt to touch screens on mobile devices.</p>
-                </div>
-                
-                <div class="bg-apple-light-gray dark:bg-gray-700 p-4 rounded-lg">
-                    <h3 class="text-xl font-semibold mb-2">How do I unlock new characters?</h3>
-                    <p>New characters can be unlocked by reaching specific milestones in the game, such as surviving for a certain amount of time or defeating specific boss monsters.</p>
-                </div>
-                
-                <div class="bg-apple-light-gray dark:bg-gray-700 p-4 rounded-lg">
-                    <h3 class="text-xl font-semibold mb-2">Does the game save my progress?</h3>
-                    <p>Yes, the game automatically saves your progress, including unlocked characters and achievements, using browser storage.</p>
-                </div>
+            <!-- Game Card Container - Will be dynamically filled by JavaScript -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Game Cards will be dynamically loaded by JavaScript -->
             </div>
         </section>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-apple-blue text-white py-8">
+    <footer class="bg-gray-800 text-white py-12">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
-                    <h3 class="text-xl font-bold mb-4">Gamerence</h3>
-                    <p class="mb-4">Your destination for free online games. Play the best browser games without downloads or installations.</p>
-                    <p>&copy; 2023 Gamerence.com. All rights reserved.</p>
+                    <h3 class="text-lg font-semibold mb-4">About Gamerence</h3>
+                    <p class="text-gray-400">Gamerence is a platform that offers free online HTML5 games, no download needed, start playing instantly. From action, adventure to puzzle, strategy, all kinds of games are available.</p>
                 </div>
                 
                 <div>
-                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <h3 class="text-lg font-semibold mb-4">Quick Navigation</h3>
                     <ul class="space-y-2">
-                        <li><a href="https://gamerence.com" class="hover:text-apple-light-gray transition-colors">Home</a></li>
-                        <li><a href="https://gamerence.com/games" class="hover:text-apple-light-gray transition-colors">Games</a></li>
-                        <li><a href="https://gamerence.com/categories" class="hover:text-apple-light-gray transition-colors">Categories</a></li>
-                        <li><a href="https://gamerence.com/popular" class="hover:text-apple-light-gray transition-colors">Popular Games</a></li>
-                        <li><a href="https://gamerence.com/new" class="hover:text-apple-light-gray transition-colors">New Games</a></li>
+                        <li><a href="./index.html" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="./categories/categories.html" class="text-gray-400 hover:text-white">Categories</a></li>
+                        <li><a href="./games/all-games.html" class="text-gray-400 hover:text-white">All Games</a></li>
+                        <li><a href="./games/popular.html" class="text-gray-400 hover:text-white">Popular</a></li>
+                        <li><a href="./games/new.html" class="text-gray-400 hover:text-white">Latest Games</a></li>
                     </ul>
                 </div>
                 
                 <div>
-                    <h3 class="text-xl font-bold mb-4">Legal</h3>
+                    <h3 class="text-lg font-semibold mb-4">Popular Categories</h3>
                     <ul class="space-y-2">
-                        <li><a href="https://gamerence.com/privacy" class="hover:text-apple-light-gray transition-colors">Privacy Policy</a></li>
-                        <li><a href="https://gamerence.com/terms" class="hover:text-apple-light-gray transition-colors">Terms of Service</a></li>
-                        <li><a href="https://gamerence.com/cookies" class="hover:text-apple-light-gray transition-colors">Cookie Policy</a></li>
-                        <li><a href="https://gamerence.com/contact" class="hover:text-apple-light-gray transition-colors">Contact Us</a></li>
+                        <li><a href="./categories/category-template.html?category=action" class="text-gray-400 hover:text-white">Action Games</a></li>
+                        <li><a href="./categories/category-template.html?category=adventure" class="text-gray-400 hover:text-white">Adventure Games</a></li>
+                        <li><a href="./categories/category-template.html?category=puzzle" class="text-gray-400 hover:text-white">Puzzle Games</a></li>
+                        <li><a href="./categories/category-template.html?category=strategy" class="text-gray-400 hover:text-white">Strategy Games</a></li>
                     </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between">
+                <p class="text-gray-400">© 2025 Gamerence. All rights reserved.</p>
+                <div class="mt-4 md:mt-0">
+                    <a href="./privacy.html" class="text-gray-400 hover:text-white mr-4">Privacy Policy</a>
+                    <a href="./terms.html" class="text-gray-400 hover:text-white">Terms of Service</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Structured Data for SEO -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "VideoGame",
-        "name": "Monster Survivors",
-        "description": "An exciting survival action game where you face endless waves of monsters. Survive as long as possible while defeating monsters and upgrading your character.",
-        "genre": ["Action", "Survival", "Roguelike"],
-        "playMode": "SinglePlayer",
-        "applicationCategory": "Browser Game",
-        "operatingSystem": "Any",
-        "url": "https://gamerence.com/monster-survivors",
-        "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD",
-            "availability": "https://schema.org/InStock"
-        },
-        "publisher": {
-            "@type": "Organization",
-            "name": "Gamerence",
-            "url": "https://gamerence.com"
-        }
-    }
-    </script>
+    <!-- Custom JavaScript -->
+    <script src="js/main.js"></script>
+    <script src="js/categories.js"></script>
 </body>
 </html> 
