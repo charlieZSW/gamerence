@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Category - Gamerence | Free Online HTML5 Games</title>
-    <meta name="description" content="Play various types of free HTML5 games on Gamerence.">
+    <title id="page-title">Game Category - Gamerence | Free Online HTML5 Games</title>
+    <meta id="page-description" name="description" content="Play various types of free HTML5 games on Gamerence.">
     <meta name="keywords" content="HTML5 games,free games,online games,casual games">
     
-    <link rel="canonical" href="https://gamerence.com/categories/category-template.html">
+    <link id="canonical-link" rel="canonical" href="https://gamerence.com/categories/category-template.html">
     
     <!-- Tailwind CSS -->
     <link rel="stylesheet" href="../css/tailwind/tailwind.min.css">
@@ -345,24 +345,78 @@
         
         // Page Load Initialization
         document.addEventListener('DOMContentLoaded', function() {
-            // Get Category Parameter from URL
-            currentCategory = getUrlParameter('category') || 'action';
-            console.log('Current Category:', currentCategory);
+            // 获取URL中的分类参数
+            const urlParams = new URLSearchParams(window.location.search);
+            const categoryParam = urlParams.get('category');
             
-            // Initialize Category Information
-            initCategoryInfo(currentCategory);
+            // 如果没有分类参数，显示错误信息
+            if (!categoryParam) {
+                document.getElementById('category-header').classList.add('hidden');
+                document.getElementById('games-container').innerHTML = `
+                    <div class="col-span-full py-12 text-center">
+                        <div class="mx-auto w-24 h-24 bg-red-100 rounded-full flex items-center justify-center mb-4">
+                            <svg class="w-12 h-12 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-medium text-gray-900">Category Parameter Missing</h3>
+                        <p class="mt-1 text-gray-500">Please select a valid game category.</p>
+                    </div>
+                `;
+                return;
+            }
             
-            // Load Game Data
+            // 确保分类参数有效
+            if (!categoryDefinitions[categoryParam]) {
+                document.getElementById('category-header').classList.add('hidden');
+                document.getElementById('games-container').innerHTML = `
+                    <div class="col-span-full py-12 text-center">
+                        <div class="mx-auto w-24 h-24 bg-red-100 rounded-full flex items-center justify-center mb-4">
+                            <svg class="w-12 h-12 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-medium text-gray-900">Invalid Category</h3>
+                        <p class="mt-1 text-gray-500">The category "${categoryParam}" does not exist.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            // 获取分类定义
+            const category = categoryDefinitions[categoryParam];
+            currentCategory = categoryParam; // 设置当前分类
+            
+            // 更新页面标题和描述
+            document.getElementById('page-title').innerText = `${category.name} - Gamerence | Free Online HTML5 Games`;
+            document.getElementById('page-description').setAttribute('content', `Play free ${categoryParam.toLowerCase()} games on Gamerence. Enjoy the best selection of ${categoryParam.toLowerCase()} HTML5 games without download.`);
+            document.getElementById('canonical-link').setAttribute('href', `https://gamerence.com/categories/category-template.html?category=${categoryParam}`);
+            
+            // 更新面包屑导航
+            document.getElementById('category-breadcrumb').textContent = category.name;
+            
+            // 更新分类标题和描述
+            document.getElementById('category-title').textContent = category.name;
+            document.getElementById('category-description').textContent = category.description;
+            
+            // 更新分类图标和颜色
+            document.getElementById('category-icon').innerHTML = category.icon;
+            document.getElementById('category-header').className = document.getElementById('category-header').className.replace(/from-\w+-\d+ to-\w+-\d+/, category.color);
+            
+            // 更新无结果提示
+            document.getElementById('no-results-title').textContent = `No ${category.name} Found`;
+            
+            // 加载游戏数据
             loadGames();
             
-            // Initialize Sorting Function
+            // 初始化排序功能
             document.getElementById('sort-select').addEventListener('change', function() {
                 sortType = this.value;
                 console.log('Sorting Method Changed to:', sortType);
                 sortAndDisplayGames();
             });
             
-            // Initialize Pagination Event Listener
+            // 初始化分页事件监听
             document.getElementById('prev-page').addEventListener('click', function() {
                 if (currentPage > 1) {
                     currentPage--;
@@ -378,32 +432,6 @@
                 }
             });
         });
-        
-        // Initialize Category Information
-        function initCategoryInfo(categoryId) {
-            const categoryInfo = categoryDefinitions[categoryId] || categoryDefinitions.default;
-            
-            // Update Page Title
-            document.title = `${categoryInfo.name} - Gamerence | Free Online HTML5 Games`;
-            
-            // Update Breadcrumbs
-            document.getElementById('category-breadcrumb').textContent = categoryInfo.name;
-            
-            // Update Category Title and Description
-            document.getElementById('category-title').textContent = categoryInfo.name;
-            document.getElementById('category-description').textContent = categoryInfo.description;
-            
-            // Update Category Icon
-            document.getElementById('category-icon').innerHTML = categoryInfo.icon;
-            
-            // Update Category Color
-            const headerElement = document.getElementById('category-header');
-            headerElement.classList.remove('from-blue-500', 'to-blue-600');
-            headerElement.classList.add(...categoryInfo.color.split(' '));
-            
-            // Update No Results Prompt
-            document.getElementById('no-results-title').textContent = `No ${categoryInfo.name} Found`;
-        }
         
         // Load Game Data
         async function loadGames() {

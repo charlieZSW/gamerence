@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loading... - Gamerence | Free Online HTML5 Games</title>
-    <meta name="description" content="Play the best HTML5 games for free on Gamerence, no download required, just click and play.">
+    <title id="page-title">Loading... - Gamerence | Free Online HTML5 Games</title>
+    <meta id="page-description" name="description" content="Play the best HTML5 games for free on Gamerence, no download required, just click and play.">
     <meta name="keywords" content="html5 games, free games, online games">
     
     <!-- Tailwind CSS -->
@@ -259,79 +259,58 @@
     <script>
         function gameApp() {
             return {
-                gameId: '',
                 game: {},
-                similarGames: [],
-                isLoading: true,
                 gameFound: false,
+                isLoading: true,
+                similarGames: [],
                 
-                // Initialize
                 init() {
                     // Get game ID from URL
                     const urlParams = new URLSearchParams(window.location.search);
-                    this.gameId = urlParams.get('id');
+                    const gameId = urlParams.get('id');
                     
-                    if (!this.gameId) {
+                    if (!gameId) {
                         this.isLoading = false;
                         return;
                     }
                     
                     // Load game data
-                    this.loadGameData();
-                },
-                
-                // Load game data
-                async loadGameData() {
-                    try {
-                        // Fix data file path to ensure correct access
-                        const response = await fetch('../data/games.json');
-                        if (!response.ok) {
-                            throw new Error('Unable to load game data');
-                        }
-                        
-                        const data = await response.json();
-                        
-                        // Find current game
-                        const currentGame = data.find(game => game.id === this.gameId);
-                        
-                        if (currentGame) {
-                            this.game = currentGame;
+                    fetch('../data/games.json')
+                        .then(response => response.json())
+                        .then(data => {
+                            // Find the game with matching ID
+                            const game = data.find(g => g.id === gameId);
                             
-                            // Set page title and meta tags
-                            document.title = `${currentGame.title} - Gamerence | Free Online HTML5 Games`;
-                            document.querySelector('meta[name="description"]').setAttribute('content', currentGame.description);
-                            
-                            // 为meta keywords添加所有分类
-                            let keywordsContent = `${currentGame.title}, `;
-                            if (currentGame.categories && Array.isArray(currentGame.categories)) {
-                                keywordsContent += currentGame.categories.join(', ') + ', ';
-                            } else {
-                                keywordsContent += `${currentGame.category}, `;
-                            }
-                            keywordsContent += 'html5 games, free games, online games';
-                            document.querySelector('meta[name="keywords"]').setAttribute('content', keywordsContent);
-                            
-                            // Handle embed URL
-                            if (!currentGame.embedUrl && currentGame.url) {
-                                // If no embedUrl but has url field, try to convert
-                                const urlParts = currentGame.url.split('/');
-                                const gameName = urlParts[urlParts.length - 1].replace('.html', '');
-                                this.game.embedUrl = `https://www.crazygames.com/embed/${gameName}`;
+                            if (game) {
+                                this.game = game;
+                                this.gameFound = true;
+                                
+                                // 更新页面标题和描述
+                                document.getElementById('page-title').innerText = `${game.title} - Play Free on Gamerence`;
+                                const shortDescription = game.description.substring(0, 150) + (game.description.length > 150 ? '...' : '');
+                                document.getElementById('page-description').setAttribute('content', `Play ${game.title} free online. ${shortDescription}`);
+                                
+                                // 更新规范链接
+                                const canonicalLink = document.querySelector('link[rel="canonical"]');
+                                if (canonicalLink) {
+                                    canonicalLink.setAttribute('href', `https://gamerence.com/games/play.html?id=${gameId}`);
+                                } else {
+                                    const link = document.createElement('link');
+                                    link.rel = 'canonical';
+                                    link.href = `https://gamerence.com/games/play.html?id=${gameId}`;
+                                    document.head.appendChild(link);
+                                }
+                                
+                                // Find similar games (same category or random if none)
+                                this.loadSimilarGames(data, game);
                             }
                             
-                            // Find similar games (same category or random recommendations)
-                            this.loadSimilarGames(data, currentGame);
-                            
-                            this.gameFound = true;
-                        } else {
-                            this.gameFound = false;
-                        }
-                    } catch (error) {
-                        console.error('Failed to load game data:', error);
-                        this.gameFound = false;
-                    } finally {
-                        this.isLoading = false;
-                    }
+                            this.isLoading = false;
+                        })
+                        .catch(error => {
+                            console.error('Error loading game data:', error);
+                            this.isLoading = false;
+                        });
                 },
                 
                 // Load similar games
