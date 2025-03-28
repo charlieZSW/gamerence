@@ -91,13 +91,17 @@
                         <!-- Basic Game Information -->
                         <div class="md:col-span-2">
                             <div class="flex flex-wrap mb-4">
-                                <!-- 主分类标签 -->
-                                <span class="bg-apple-blue text-white rounded-full px-3 py-1 text-xs mr-2 mb-2" x-text="game.category"></span>
+                                <!-- 主分类标签 - 转换为链接 -->
+                                <a :href="'../categories/category-template.html?category=' + game.category.toLowerCase()" 
+                                   class="bg-apple-blue text-white rounded-full px-3 py-1 text-xs mr-2 mb-2 hover:bg-blue-600 transition-colors" 
+                                   x-text="game.category"></a>
                                 
-                                <!-- 其他分类标签 (如果存在) -->
+                                <!-- 其他分类标签 (如果存在) - 转换为链接 -->
                                 <template x-if="game.categories && game.categories.length > 1">
                                     <template x-for="(cat, index) in game.categories.slice(1)" :key="index">
-                                        <span class="bg-apple-light-gray text-gray-700 rounded-full px-3 py-1 text-xs mr-2 mb-2" x-text="cat"></span>
+                                        <a :href="'../categories/category-template.html?category=' + cat.toLowerCase()" 
+                                           class="bg-apple-light-gray text-gray-700 rounded-full px-3 py-1 text-xs mr-2 mb-2 hover:bg-gray-300 transition-colors" 
+                                           x-text="cat"></a>
                                     </template>
                                 </template>
                                 
@@ -186,14 +190,20 @@
                             <div class="p-3">
                                 <h3 class="font-bold text-sm line-clamp-1" x-text="similarGame.title"></h3>
                                 <div class="flex text-xs text-gray-500 mt-1 flex-wrap">
-                                    <!-- 显示主分类 -->
+                                    <!-- 显示主分类 - 转换为链接 -->
                                     <template x-if="similarGame.category">
-                                        <span class="bg-apple-light-gray text-gray-700 rounded-full px-2 py-0.5 text-xs mr-1 mb-1" x-text="similarGame.category"></span>
+                                        <a :href="'../categories/category-template.html?category=' + similarGame.category.toLowerCase()" 
+                                           class="bg-apple-light-gray text-gray-700 rounded-full px-2 py-0.5 text-xs mr-1 mb-1 hover:bg-gray-300 transition-colors"
+                                           x-text="similarGame.category"
+                                           @click.stop></a>
                                     </template>
                                     
-                                    <!-- 显示第二个分类（如果存在） -->
+                                    <!-- 显示第二个分类（如果存在） - 转换为链接 -->
                                     <template x-if="similarGame.categories && similarGame.categories.length > 1">
-                                        <span class="bg-apple-light-gray text-gray-700 rounded-full px-2 py-0.5 text-xs mr-1 mb-1" x-text="similarGame.categories[1]"></span>
+                                        <a :href="'../categories/category-template.html?category=' + similarGame.categories[1].toLowerCase()" 
+                                           class="bg-apple-light-gray text-gray-700 rounded-full px-2 py-0.5 text-xs mr-1 mb-1 hover:bg-gray-300 transition-colors"
+                                           x-text="similarGame.categories[1]"
+                                           @click.stop></a>
                                     </template>
                                 </div>
                             </div>

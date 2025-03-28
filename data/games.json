@@ -1423,5 +1423,382 @@
         "isNew": true,
         "featured": false,
         "url": "./play.html?id=pop-it-3d"
+    },
+    {
+        "id": "basketbros",
+        "title": "Basketbros",
+        "description": "BasketBros is a fast-paced basketball game with online and offline gameplay. Choose a basketballer, customize your style, and compete in singleplayer and multiplayer games. Throw down some sick dunks and win the game to earn upgrades and unlockables.",
+        "category": "sports",
+        "categories": [
+            "sports",
+            "multiplayer",
+            "mmo"
+        ],
+        "embedUrl": "https://www.crazygames.com/embed/basketbros",
+        "image": "https://imgs.crazygames.com/basketbros_16x9/20250320082607/basketbros_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+        "rating": 4.3,
+        "plays": 19724,
+        "dateAdded": "2025-03-28",
+        "isNew": true,
+        "featured": true,
+        "url": "./play.html?id=basketbros"
+    },
+    {
+        "id": "checkers-draughts-multiplayer",
+        "title": "Checkers Draughts Multiplayer",
+        "description": "Checkers &amp; Draughts Multiplayer is an online checkers game where you can challenge friends or compete with players worldwide. Play and test your skills in multiple exciting variants, including Default Checkers, International Draughts, Russian Draughts, Brazilian Draughts, and Canadian Draughts.",
+        "category": "multiplayer",
+        "categories": [
+            "multiplayer",
+            "mmo",
+            "rpg"
+        ],
+        "embedUrl": "https://www.crazygames.com/embed/checkers-draughts-multiplayer",
+        "image": "https://imgs.crazygames.com/checkers-draughts-multiplayer_16x9/20250327132036/checkers-draughts-multiplayer_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+        "rating": 3.8,
+        "plays": 9706,
+        "dateAdded": "2025-03-28",
+        "isNew": true,
+        "featured": true,
+        "url": "./play.html?id=checkers-draughts-multiplayer"
+    },
+    {
+        "id": "kingdom-solitaire",
+        "title": "Kingdom Solitaire",
+        "description": "Kingdom Solitaire is a captivating journey where you, as Tony the butler, restore a majestic castle by mastering challenging solitaire levels. Delight in vibrant artwork, unique cards, and exciting mechanics while uncovering a heartwarming tale of a queen and her beloved pets. With constant updates introducing fresh surprises, your royal adventure will never grow dull!",
+        "category": "adventure",
+        "categories": [
+            "adventure",
+            "card",
+            "strategy"
+        ],
+        "embedUrl": "https://www.crazygames.com/embed/kingdom-solitaire",
+        "image": "https://imgs.crazygames.com/kingdom-solitaire_16x9/20250327081311/kingdom-solitaire_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+        "rating": 4.0,
+        "plays": 7745,
+        "dateAdded": "2025-03-28",
+        "isNew": true,
+        "featured": false,
+        "url": "./play.html?id=kingdom-solitaire"
+    },
+    {
+        "id": "atari-breakout",
+        "title": "Atari Breakout",
+        "description": "Atari Breakout is an updated version of the legendary Breakout game by Atari. The aim of the game is to bat the ball at the colored blocks until there are none left, while making sure the ball does not pass your paddle. Enjoy this classic game with power-ups to boost you to the next level.",
+        "category": "arcade",
+        "categories": [
+            "arcade",
+            "sports",
+            "shooter"
+        ],
+        "embedUrl": "https://www.crazygames.com/embed/atari-breakout",
+        "image": "https://imgs.crazygames.com/games/atari-breakout/cover-1613643674419.jpeg?metadata=none&quality=40&width=1200&height=630&fit=crop",
+        "rating": 4.1,
+        "plays": 6223,
+        "dateAdded": "2025-03-28",
+        "isNew": true,
+        "featured": true,
+        "url": "./play.html?id=atari-breakout"
+    },
+    {
+        "id": "go-chicken-go",
+        "title": "Go Chicken Go",
+        "description": "Go Chicken Go! is a fun arcade casual game in which you need to help a bunch of chickens cross a road and river safely without getting run over. Can you try to save all the chickens and bring them to safety?",
+        "category": "arcade",
+        "categories": [
+            "arcade",
+            "platformer",
+            "casual"
+        ],
+        "embedUrl": "https://www.crazygames.com/embed/go-chicken-go",
+        "image": "https://imgs.crazygames.com/games/go-chicken-go/thumb-1556021057799.png?metadata=none&quality=40&width=1200&height=630&fit=crop",
+        "rating": 4.1,
+        "plays": 6188,
+        "dateAdded": "2025-03-28",
+        "isNew": true,
+        "featured": false,
+        "url": "./play.html?id=go-chicken-go"
+    },
+    {
+        "id": "google-feud",
+        "title": "Google Feud",
+        "description": "Google Feud is a casual game where you must guess the rest of a Google query. There are 10 answers for each question, presented in a quiz format similar to Family Feud. Like the hit quiz show, you have 3 guesses, so use them wisely!",
+        "category": "casual",
+        "categories": [
+            "casual",
+            "adventure",
+            "action"
+        ],
+        "embedUrl": "https://www.crazygames.com/embed/google-feud",
+        "image": "https://imgs.crazygames.com/games/google-feud/thumb-1557498552743.png?metadata=none&quality=40&width=1200&height=630&fit=crop",
+        "rating": 3.6,
+        "plays": 5646,
+        "dateAdded": "2025-03-28",
+        "isNew": true,
+        "featured": false,
+        "url": "./play.html?id=google-feud"
+    },
+    {
+        "id": "rush-hour-owq",
+        "title": "Rush Hour Owq",
+        "description": "Rush Hour is a high-speed racing adventure where every street becomes a thrilling challenge. Navigate busy urban traffic, pushing your reflexes and skills to the limit with each drift and daring maneuver. Embrace the adrenaline, master every sharp turn, and prove you have what it takes to reign as the ultimate champion of speed!",
+        "category": "racing",
+        "categories": [
+            "racing",
+            "adventure",
+            "rpg"
+        ],
+        "embedUrl": "https://www.crazygames.com/embed/rush-hour-owq",
+        "image": "https://imgs.crazygames.com/rush-hour-owq_16x9/20241114083557/rush-hour-owq_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+        "rating": 4.7,
+        "plays": 18085,
+        "dateAdded": "2025-03-28",
+        "isNew": true,
+        "featured": false,
+        "url": "./play.html?id=rush-hour-owq"
+    },
+    {
+        "id": "geometry-neon-dash-subzero",
+        "title": "Geometry Neon Dash Subzero",
+        "description": "Geometry Dash Subzero is a side scrolling avoid game, another awesome title from the Geometry Dash series. Your task is to take control of your small yet speedy geometric cube and try to make your way through a series of (very) challenging levels!",
+        "category": "racing",
+        "categories": [
+            "racing"
+        ],
+        "embedUrl": "https://www.crazygames.com/embed/geometry-neon-dash-subzero",
+        "image": "https://imgs.crazygames.com/games/geometry-neon-dash-subzero/cover-1620298954142.png?metadata=none&quality=40&width=1200&height=630&fit=crop",
+        "rating": 4.8,
+        "plays": 1237,
+        "dateAdded": "2025-03-28",
+        "isNew": true,
+        "featured": true,
+        "url": "./play.html?id=geometry-neon-dash-subzero"
+    },
+    {
+        "id": "geometry-dash-meltdown",
+        "title": "Geometry Dash Meltdown",
+        "description": "Geometry Dash Meltdown is a casual, fast-paced cube racing game where your objective is to avoid all obstacles along your path as you side-scroll your way to victory. This one-click game packs an adrenaline punch from graphics to speed to music. Yet another episode of the fast-paced cube racing game in the Geometry Dash series!",
+        "category": "racing",
+        "categories": [
+            "racing",
+            "action",
+            "casual"
+        ],
+        "embedUrl": "https://www.crazygames.com/embed/geometry-dash-meltdown",
+        "image": "https://imgs.crazygames.com/games/geometry-dash-meltdown/cover-1620298906040.png?metadata=none&quality=40&width=1200&height=630&fit=crop",
+        "rating": 4.1,
+        "plays": 14146,
+        "dateAdded": "2025-03-28",
+        "isNew": true,
+        "featured": false,
+        "url": "./play.html?id=geometry-dash-meltdown"
+    },
+    {
+        "id": "fireboy-and-watergirl-6-fairy-tales",
+        "title": "Fireboy And Watergirl 6 Fairy Tales",
+        "description": "Fireboy and Watergirl 6 Fairy Tales is a casual game, the sixth puzzling platformer in the Fireboy and Watergirl series. This time, you’re exploring a new temple with fairies that help you solve puzzles.",
+        "category": "puzzle",
+        "categories": [
+            "puzzle",
+            "platformer",
+            "casual"
+        ],
+        "embedUrl": "https://www.crazygames.com/embed/fireboy-and-watergirl-6-fairy-tales",
+        "image": "https://imgs.crazygames.com/games/fireboy-and-watergirl-6-fairy-tales/cover-1633535362787.png?metadata=none&quality=40&width=1200&height=630&fit=crop",
+        "rating": 3.5,
+        "plays": 1803,
+        "dateAdded": "2025-03-28",
+        "isNew": true,
+        "featured": true,
+        "url": "./play.html?id=fireboy-and-watergirl-6-fairy-tales"
+    },
+    {
+        "id": "helix-jump",
+        "title": "Helix Jump",
+        "description": "Helix Jump is a casual game with simple and addictively fun mechanics. In the game, you guide a bouncing ball continuously down a series of circular platforms until you crash. Fall through the cracks and avoid landing in the forbidden zones!",
+        "category": "casual",
+        "categories": [
+            "casual",
+            "platformer",
+            "sports"
+        ],
+        "embedUrl": "https://www.crazygames.com/embed/helix-jump",
+        "image": "https://imgs.crazygames.com/games/helix-jump/cover_16x9-1733222901873.png?metadata=none&quality=40&width=1200&height=630&fit=crop",
+        "rating": 4.8,
+        "plays": 2884,
+        "dateAdded": "2025-03-28",
+        "isNew": true,
+        "featured": false,
+        "url": "./play.html?id=helix-jump"
+    },
+    {
+        "id": "jet-rush",
+        "title": "Jet Rush",
+        "description": "Jet Rush is an awesome platform game with superb arcade-style gameplay. You control a high-tech jet plane and you must pilot it through a series of challenging courses and obstacles. The controls to drive your jet are straightforward. The gameplay, however, is anything but simple! The speed of your plane is fast and you must work hard to avoid the obstacles and conquer each level.",
+        "category": "racing",
+        "categories": [
+            "racing",
+            "platformer",
+            "arcade"
+        ],
+        "embedUrl": "https://www.crazygames.com/embed/jet-rush",
+        "image": "https://imgs.crazygames.com/games/jet-rush/cover-1663772569110.png?metadata=none&quality=40&width=1200&height=630&fit=crop",
+        "rating": 3.6,
+        "plays": 11289,
+        "dateAdded": "2025-03-28",
+        "isNew": true,
+        "featured": true,
+        "url": "./play.html?id=jet-rush"
+    },
+    {
+        "id": "color-tunnel",
+        "title": "Color Tunnel",
+        "description": "Color Tunnel is an endless running game to zoom at high speed through the colorful tunnel avoiding obstacles. The game takes you through various levels with challenging new obstacles the further you progress!",
+        "category": "racing",
+        "categories": [
+            "racing",
+            "platformer"
+        ],
+        "embedUrl": "https://www.crazygames.com/embed/color-tunnel",
+        "image": "https://imgs.crazygames.com/tunnelrushb.png?metadata=none&quality=40&width=1200&height=630&fit=crop",
+        "rating": 3.5,
+        "plays": 10948,
+        "dateAdded": "2025-03-28",
+        "isNew": true,
+        "featured": false,
+        "url": "./play.html?id=color-tunnel"
+    },
+    {
+        "id": "stacky-bird",
+        "title": "Stacky Bird",
+        "description": "Stacky Bird is a hyper-casual arcade game where you stack eggs to avoid obstacles. Lay egg towers and dash to avoid crashing your bird. Progress through the colorful levels, fly to new worlds, and enjoy the rewards!",
+        "category": "arcade",
+        "categories": [
+            "arcade",
+            "casual",
+            "strategy"
+        ],
+        "embedUrl": "https://www.crazygames.com/embed/stacky-bird",
+        "image": "https://imgs.crazygames.com/stacky-bird_16x9/20240502071013/stacky-bird_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+        "rating": 4.9,
+        "plays": 5208,
+        "dateAdded": "2025-03-28",
+        "isNew": true,
+        "featured": false,
+        "url": "./play.html?id=stacky-bird"
+    },
+    {
+        "id": "man-runner-2048",
+        "title": "Man Runner 2048",
+        "description": "Man Runner 2048 is a fun casual game where you run and merge men to reach 2048. Your goal is to get the highest score on each level so you can shoot the giant monsters with the most power.",
+        "category": "platformer",
+        "categories": [
+            "platformer",
+            "shooter",
+            "sports"
+        ],
+        "embedUrl": "https://www.crazygames.com/embed/man-runner-2048",
+        "image": "https://imgs.crazygames.com/man-runner-2048_16x9/20250306040019/man-runner-2048_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+        "rating": 3.6,
+        "plays": 15658,
+        "dateAdded": "2025-03-28",
+        "isNew": true,
+        "featured": true,
+        "url": "./play.html?id=man-runner-2048"
+    },
+    {
+        "id": "dalgona-candy-honeycomb-cookie-kam",
+        "title": "Dalgona Candy Honeycomb Cookie Kam",
+        "description": "Dalgona Candy Honeycomb Cookie is a fun, shape-carving challenge where you’ll carefully cut out designs from honeycomb cookies. With levels that feature classic dalgona, American cookies, and more, you’ll have plenty of shapes to carve from hearts to animals using a variety of cookie carver tools. Embrace the challenge and create delightful cookie masterpieces!",
+        "category": "racing",
+        "categories": [
+            "racing",
+            "arcade",
+            "sandbox"
+        ],
+        "embedUrl": "https://www.crazygames.com/embed/dalgona-candy-honeycomb-cookie-kam",
+        "image": "https://imgs.crazygames.com/dalgona-candy-honeycomb-cookie-kam_16x9/20241224033758/dalgona-candy-honeycomb-cookie-kam_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+        "rating": 4.7,
+        "plays": 13197,
+        "dateAdded": "2025-03-28",
+        "isNew": true,
+        "featured": false,
+        "url": "./play.html?id=dalgona-candy-honeycomb-cookie-kam"
+    },
+    {
+        "id": "doodle-road",
+        "title": "Doodle Road",
+        "description": "Doodle Road is an imaginative and captivating 2D casual game that combines creativity with problem-solving. In this fun browser game, your primary objective is to draw a path that will successfully guide a car from the starting point to the finish line. With a multitude of levels to explore, each one introduces new challenges and exciting obstacles that test your creativity and strategic thinking. Draw your way to victory and see how far your creativity can take you!",
+        "category": "adventure",
+        "categories": [
+            "adventure",
+            "racing",
+            "casual"
+        ],
+        "embedUrl": "https://www.crazygames.com/embed/doodle-road",
+        "image": "https://imgs.crazygames.com/doodle-road_16x9/20240912101139/doodle-road_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+        "rating": 5.0,
+        "plays": 9667,
+        "dateAdded": "2025-03-28",
+        "isNew": true,
+        "featured": false,
+        "url": "./play.html?id=doodle-road"
+    },
+    {
+        "id": "chicken-scream",
+        "title": "Chicken Scream",
+        "description": "Chicken Scream is a laugh-out-loud casual arcade platform game where your voice takes control! Unleash your inner chicken and scream your way to victory in this hilarious voice-controlled adventure. Searching for a quirky game that gets you talking (or yelling)? Look no further—Chicken Scream is the perfect game for you!",
+        "category": "adventure",
+        "categories": [
+            "adventure",
+            "arcade",
+            "platformer"
+        ],
+        "embedUrl": "https://www.crazygames.com/embed/chicken-scream",
+        "image": "https://imgs.crazygames.com/chicken-scream_16x9/20250129081835/chicken-scream_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+        "rating": 4.5,
+        "plays": 11598,
+        "dateAdded": "2025-03-28",
+        "isNew": true,
+        "featured": false,
+        "url": "./play.html?id=chicken-scream"
+    },
+    {
+        "id": "match-arena",
+        "title": "Match Arena",
+        "description": "Match Arena is a superb match-three puzzle game in which you can play multiplayer match-three mayhem with other players worldwide! During each match, you must accomplish a specific goal to win. Goals include having a higher number of total matches or having a higher score than your opponent. These goals change to keep the game fresh.",
+        "category": "puzzle",
+        "categories": [
+            "puzzle",
+            "sports",
+            "multiplayer"
+        ],
+        "embedUrl": "https://www.crazygames.com/embed/match-arena",
+        "image": "https://imgs.crazygames.com/match-arena_16x9/20250117084233/match-arena_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+        "rating": 4.6,
+        "plays": 14491,
+        "dateAdded": "2025-03-28",
+        "isNew": true,
+        "featured": true,
+        "url": "./play.html?id=match-arena"
+    },
+    {
+        "id": "diamond-dungeon---match-3",
+        "title": "Diamond Dungeon   Match 3",
+        "description": "Diamond Dungeon: Match 3 is the ultimate arcade match 3 game where your mission is to obliterate crystals and conquer challenging levels. Match 3 crystals in a line or combine four or more for bonus crystals with unique effects. Explore classic obstacles and encounter new puzzle mechanics like gravity, teleporters, magic spheres, hidden treasures, and more. With beautiful gems, regular level updates, and a captivating soundtrack, this game is a gem for puzzle lovers of all ages.",
+        "category": "arcade",
+        "categories": [
+            "arcade",
+            "adventure",
+            "puzzle"
+        ],
+        "embedUrl": "https://www.crazygames.com/embed/diamond-dungeon---match-3",
+        "image": "https://imgs.crazygames.com/diamond-dungeon---match-3/20230522023451/diamond-dungeon---match-3-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+        "rating": 4.5,
+        "plays": 17038,
+        "dateAdded": "2025-03-28",
+        "isNew": true,
+        "featured": true,
+        "url": "./play.html?id=diamond-dungeon---match-3"
     }
 ]

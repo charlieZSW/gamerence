@@ -53,10 +53,14 @@ async function initAllGames() {
 /**
  * Display game count
  */
-function displayGameCount(count) {
+function displayGameCount(count, isFiltered = false) {
     const subtitle = document.querySelector('main section:first-child p');
     if (subtitle) {
-        subtitle.textContent = `Explore all the amazing HTML5 games on our platform (${count} total)`;
+        if (isFiltered) {
+            subtitle.textContent = `Found ${count} games matching your filter criteria`;
+        } else {
+            subtitle.textContent = `Explore all the amazing HTML5 games on our platform (${count} total)`;
+        }
     }
 }
 
@@ -173,12 +177,29 @@ function createGameCard(game) {
         <div class="p-3">
             <h3 class="font-bold text-sm md:text-base line-clamp-1">${game.title}</h3>
             <div class="flex text-xs text-gray-500 mt-1 flex-wrap">
-                <!-- 主分类标签 -->
-                <span class="bg-apple-light-gray text-gray-700 rounded-full px-2 py-0.5 text-xs mr-1 mb-1">${game.category || 'Unknown'}</span>
+                <!-- 主分类标签 - 转换为链接 -->
+                ${game.category ? 
+                  `<a href="../categories/category-template.html?category=${game.category.toLowerCase()}" 
+                      class="bg-apple-light-gray text-gray-700 rounded-full px-2 py-0.5 text-xs mr-1 mb-1 hover:bg-gray-300 transition-colors"
+                      target="_blank"
+                      onclick="event.stopPropagation();">
+                      ${game.category}
+                   </a>` : ''}
                 
-                <!-- 额外分类标签 -->
-                ${game.categories && Array.isArray(game.categories) && game.categories.length > 1 ? 
-                  `<span class="bg-apple-light-gray text-gray-700 rounded-full px-2 py-0.5 text-xs mr-1 mb-1">${game.categories[1]}</span>` : ''}
+                <!-- 额外分类标签 (最多显示两个) - 转换为链接 -->
+                ${game.categories && Array.isArray(game.categories) ? 
+                  game.categories
+                    .filter(cat => cat.toLowerCase() !== (game.category || '').toLowerCase()) // 过滤掉与主类别重复的
+                    .slice(0, 2) // 只取前两个
+                    .map(cat => 
+                      `<a href="../categories/category-template.html?category=${cat.toLowerCase()}" 
+                          class="bg-apple-light-gray text-gray-700 rounded-full px-2 py-0.5 text-xs mr-1 mb-1 hover:bg-gray-300 transition-colors"
+                          target="_blank"
+                          onclick="event.stopPropagation();">
+                          ${cat}
+                       </a>`
+                    )
+                    .join('') : ''}
                 
                 <!-- 游戏信息标签 -->
                 ${game.rating ? `<span class="bg-apple-light-gray text-gray-700 rounded-full px-2 py-0.5 text-xs mr-1 mb-1">★ ${game.rating}</span>` : ''}
@@ -303,6 +324,12 @@ function changePage(page) {
     // Display games for selected page
     displayGames(games, page);
     
+    // Update filtered game count display
+    const categoryFilter = document.querySelector('select[aria-label="Game Category"]');
+    if (categoryFilter && categoryFilter.value) {
+        displayGameCount(games.length, true);
+    }
+    
     // Update page buttons
     const paginationContainer = document.getElementById('pagination-container');
     if (!paginationContainer) return;
@@ -417,6 +444,12 @@ function setupFilters() {
         applyButton.addEventListener('click', () => {
             const games = getFilteredGames();
             console.log(`Filtered games: ${games.length}`);
+            
+            // 更新游戏计数显示
+            const isFiltered = categoryFilter.value !== '';
+            displayGameCount(games.length, isFiltered);
+            
+            // 显示游戏和分页
             displayGames(games);
             setupPagination(games.length);
         });
@@ -441,8 +474,21 @@ function getFilteredGames() {
     // Apply category filter
     if (categoryFilter && categoryFilter.value) {
         games = games.filter(game => {
-            if (!game.category) return false;
-            return game.category.toLowerCase() === categoryFilter.value.toLowerCase();
+            // 先检查主类别
+            if (game.category && typeof game.category === 'string') {
+                if (game.category.toLowerCase() === categoryFilter.value.toLowerCase()) {
+                    return true;
+                }
+            }
+            
+            // 再检查次要类别数组
+            if (game.categories && Array.isArray(game.categories)) {
+                return game.categories.some(category => 
+                    category.toLowerCase() === categoryFilter.value.toLowerCase()
+                );
+            }
+            
+            return false;
         });
     }
     

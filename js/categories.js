@@ -10,24 +10,25 @@ const categorySelectors = {
     'racing': '[data-category="racing"] .text-apple-blue',
     'sports': '[data-category="sports"] .text-apple-blue',
     'rpg': '[data-category="rpg"] .text-apple-blue',
-    'shooter': '[data-category="shooter"] .text-apple-blue, [data-category="shooter"] .text-sm',
-    'arcade': '[data-category="arcade"] .text-sm',
-    'simulation': '[data-category="simulation"] .text-sm',
-    'platformer': '[data-category="platformer"] .text-sm',
+    'shooter': '[data-category="shooter"] .text-apple-blue',
+    'arcade': '[data-category="arcade"] .text-apple-blue',
+    'simulation': '[data-category="simulation"] .text-apple-blue',
+    'platformer': '[data-category="platformer"] .text-apple-blue',
     'idle': '[data-category="idle"] .text-sm',
-    'multiplayer': '[data-category="multiplayer"] .text-sm',
+    'multiplayer': '[data-category="multiplayer"] .text-apple-blue',
     'html5': '[data-category="html5"] .text-sm',
     'io': '[data-category="io"] .text-sm',
     'clicker': '[data-category="clicker"] .text-sm',
-    'educational': '[data-category="educational"] .text-sm',
-    'card': '[data-category="card"] .text-sm',
-    'fighting': '[data-category="fighting"] .text-sm',
-    'horror': '[data-category="horror"] .text-sm',
-    'casual': '[data-category="casual"] .text-sm',
-    'rhythm': '[data-category="rhythm"] .text-sm',
-    'sandbox': '[data-category="sandbox"] .text-sm',
-    'mmo': '[data-category="mmo"] .text-sm',
-    'board': '[data-category="board"] .text-sm'
+    'educational': '[data-category="educational"] .text-apple-blue',
+    'card': '[data-category="card"] .text-apple-blue',
+    'fighting': '[data-category="fighting"] .text-apple-blue',
+    'horror': '[data-category="horror"] .text-apple-blue',
+    'casual': '[data-category="casual"] .text-apple-blue',
+    'rhythm': '[data-category="rhythm"] .text-apple-blue',
+    'sandbox': '[data-category="sandbox"] .text-apple-blue',
+    'mmo': '[data-category="mmo"] .text-apple-blue',
+    'board': '[data-category="board"] .text-sm',
+    'fashion': '[data-category="fashion"] .text-apple-blue'
 };
 
 // Get the base path for the current page to build the games.json relative path
@@ -82,11 +83,15 @@ function countGamesByCategory(games) {
     
     // Count the number of games in each category
     games.forEach(game => {
+        // 创建一个集合来记录已经计算过的类别，避免重复计算
+        const countedCategories = new Set();
+        
         // Handle single category field (string)
         if (game.category && typeof game.category === 'string') {
             const category = game.category.toLowerCase();
             if (counts[category] !== undefined) {
                 counts[category]++;
+                countedCategories.add(category); // 记录此类别已被计算
             }
         }
         
@@ -94,8 +99,10 @@ function countGamesByCategory(games) {
         if (game.categories && Array.isArray(game.categories)) {
             game.categories.forEach(category => {
                 const categoryLower = category.toLowerCase();
-                if (counts[categoryLower] !== undefined) {
+                // 只有当这个类别尚未被计算过时才增加计数
+                if (counts[categoryLower] !== undefined && !countedCategories.has(categoryLower)) {
                     counts[categoryLower]++;
+                    countedCategories.add(categoryLower);
                 }
             });
         }
