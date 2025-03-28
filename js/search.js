@@ -241,6 +241,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     <h3 class="font-bold text-gray-900 mb-1 line-clamp-1">${game.title}</h3>
                     <div class="flex flex-wrap gap-1 mb-2">
                         <span class="text-xs bg-gray-200 rounded-full px-2 py-1">${getCategoryName(game.category)}</span>
+                        ${game.categories && Array.isArray(game.categories) && game.categories.length > 1 ? 
+                          `<span class="text-xs bg-gray-200 rounded-full px-2 py-1">${getCategoryName(game.categories[1])}</span>` : ''}
                         ${game.rating ? `<span class="text-xs bg-gray-200 rounded-full px-2 py-1">★ ${game.rating}</span>` : ''}
                         ${game.plays ? `<span class="text-xs bg-gray-200 rounded-full px-2 py-1">${game.plays} plays</span>` : ''}
                     </div>

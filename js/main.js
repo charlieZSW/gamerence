@@ -215,12 +215,44 @@ function createGameCard(game) {
         <div class="p-3">
             <h3 class="font-bold text-sm md:text-base line-clamp-1">${game.title}</h3>
             <div class="flex text-xs text-gray-500 mt-1 flex-wrap">
-                <span class="bg-apple-light-gray text-gray-700 rounded-full px-2 py-0.5 text-xs mr-1 mb-1">${game.category}</span>
+                ${generateCategoryTags(game)}
             </div>
         </div>
     `;
     
     return gameCard;
+}
+
+/**
+ * Generate category tags HTML for a game
+ */
+function generateCategoryTags(game) {
+    if (!game) return '';
+    
+    let tagsHtml = '';
+    
+    // 显示主分类标签
+    if (game.category) {
+        tagsHtml += `<span class="bg-apple-light-gray text-gray-700 rounded-full px-2 py-0.5 text-xs mr-1 mb-1">${game.category}</span>`;
+    }
+    
+    // 如果有categories数组，并且长度大于1，显示第二个分类标签
+    if (game.categories && Array.isArray(game.categories) && game.categories.length > 1) {
+        // 确保第二个标签与第一个不同
+        const secondCategory = game.categories[1];
+        if (secondCategory && secondCategory !== game.category) {
+            tagsHtml += `<span class="bg-apple-light-gray text-gray-700 rounded-full px-2 py-0.5 text-xs mr-1 mb-1">${secondCategory}</span>`;
+        }
+        // 如果有第三个标签并且我们想显示它
+        else if (game.categories.length > 2) {
+            const thirdCategory = game.categories[2];
+            if (thirdCategory && thirdCategory !== game.category) {
+                tagsHtml += `<span class="bg-apple-light-gray text-gray-700 rounded-full px-2 py-0.5 text-xs mr-1 mb-1">${thirdCategory}</span>`;
+            }
+        }
+    }
+    
+    return tagsHtml;
 }
 
 /**

@@ -91,7 +91,16 @@
                         <!-- Basic Game Information -->
                         <div class="md:col-span-2">
                             <div class="flex flex-wrap mb-4">
-                                <span class="bg-apple-light-gray text-gray-700 rounded-full px-3 py-1 text-xs mr-2 mb-2" x-text="game.category"></span>
+                                <!-- 主分类标签 -->
+                                <span class="bg-apple-blue text-white rounded-full px-3 py-1 text-xs mr-2 mb-2" x-text="game.category"></span>
+                                
+                                <!-- 其他分类标签 (如果存在) -->
+                                <template x-if="game.categories && game.categories.length > 1">
+                                    <template x-for="(cat, index) in game.categories.slice(1)" :key="index">
+                                        <span class="bg-apple-light-gray text-gray-700 rounded-full px-3 py-1 text-xs mr-2 mb-2" x-text="cat"></span>
+                                    </template>
+                                </template>
+                                
                                 <span class="bg-apple-light-gray text-gray-700 rounded-full px-3 py-1 text-xs mr-2 mb-2">
                                     <span x-text="game.plays"></span> plays
                                 </span>
@@ -177,8 +186,14 @@
                             <div class="p-3">
                                 <h3 class="font-bold text-sm line-clamp-1" x-text="similarGame.title"></h3>
                                 <div class="flex text-xs text-gray-500 mt-1 flex-wrap">
+                                    <!-- 显示主分类 -->
                                     <template x-if="similarGame.category">
                                         <span class="bg-apple-light-gray text-gray-700 rounded-full px-2 py-0.5 text-xs mr-1 mb-1" x-text="similarGame.category"></span>
+                                    </template>
+                                    
+                                    <!-- 显示第二个分类（如果存在） -->
+                                    <template x-if="similarGame.categories && similarGame.categories.length > 1">
+                                        <span class="bg-apple-light-gray text-gray-700 rounded-full px-2 py-0.5 text-xs mr-1 mb-1" x-text="similarGame.categories[1]"></span>
                                     </template>
                                 </div>
                             </div>
@@ -275,7 +290,16 @@
                             // Set page title and meta tags
                             document.title = `${currentGame.title} - Gamerence | Free Online HTML5 Games`;
                             document.querySelector('meta[name="description"]').setAttribute('content', currentGame.description);
-                            document.querySelector('meta[name="keywords"]').setAttribute('content', `${currentGame.title}, ${currentGame.category}, html5 games, free games, online games`);
+                            
+                            // 为meta keywords添加所有分类
+                            let keywordsContent = `${currentGame.title}, `;
+                            if (currentGame.categories && Array.isArray(currentGame.categories)) {
+                                keywordsContent += currentGame.categories.join(', ') + ', ';
+                            } else {
+                                keywordsContent += `${currentGame.category}, `;
+                            }
+                            keywordsContent += 'html5 games, free games, online games';
+                            document.querySelector('meta[name="keywords"]').setAttribute('content', keywordsContent);
                             
                             // Handle embed URL
                             if (!currentGame.embedUrl && currentGame.url) {
@@ -302,31 +326,49 @@
                 
                 // Load similar games
                 loadSimilarGames(allGames, currentGame) {
-                    // Find games in the same category
-                    const sameCategory = allGames.filter(game => 
-                        game.id !== currentGame.id && 
-                        game.category === currentGame.category
-                    );
+                    // 相同分类的游戏，考虑主分类和其他分类
+                    let relatedGames = [];
                     
-                    // Random games (for filling)
-                    const otherGames = allGames.filter(game => 
-                        game.id !== currentGame.id && 
-                        game.category !== currentGame.category
-                    );
-                    
-                    // Combine results (max 10)
-                    const combined = [...sameCategory];
-                    
-                    // If same category games are less than 10, add other random games
-                    if (combined.length < 10) {
-                        // Randomly shuffle otherGames array
-                        const shuffled = [...otherGames].sort(() => 0.5 - Math.random());
-                        // Take the required number of games
-                        const additional = shuffled.slice(0, 10 - combined.length);
-                        combined.push(...additional);
+                    // 如果有多个分类，优先考虑所有分类相关的游戏
+                    if (currentGame.categories && Array.isArray(currentGame.categories)) {
+                        // 获取与任何分类匹配的游戏
+                        relatedGames = allGames.filter(game => {
+                            if (game.id === currentGame.id) return false; // 排除当前游戏
+                            
+                            // 检查游戏是否与当前游戏的任何分类匹配
+                            if (game.categories && Array.isArray(game.categories)) {
+                                // 有交集的分类
+                                return game.categories.some(cat => currentGame.categories.includes(cat));
+                            } else {
+                                // 对于没有categories数组的旧数据格式，检查category字段
+                                return currentGame.categories.includes(game.category);
+                            }
+                        });
+                    } else {
+                        // 兼容旧版数据，只使用主分类
+                        relatedGames = allGames.filter(game => 
+                            game.id !== currentGame.id && 
+                            game.category === currentGame.category
+                        );
                     }
                     
-                    this.similarGames = combined.slice(0, 10);
+                    // 随机游戏（用于填充不足的推荐）
+                    const otherGames = allGames.filter(game => 
+                        !relatedGames.some(rGame => rGame.id === game.id) && 
+                        game.id !== currentGame.id
+                    );
+                    
+                    // 如果相关游戏不足10个，添加其他随机游戏
+                    if (relatedGames.length < 10) {
+                        // 随机排序其他游戏
+                        const shuffled = [...otherGames].sort(() => 0.5 - Math.random());
+                        // 取所需数量的游戏
+                        const additional = shuffled.slice(0, 10 - relatedGames.length);
+                        relatedGames.push(...additional);
+                    }
+                    
+                    // 最多返回10个推荐游戏
+                    this.similarGames = relatedGames.slice(0, 10);
                 },
                 
                 // Share game

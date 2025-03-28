@@ -177,7 +177,16 @@ function createGameCard(game) {
         <div class="p-3">
             <h3 class="font-bold text-sm md:text-base line-clamp-1">${game.title}</h3>
             <div class="flex text-xs text-gray-500 mt-1 flex-wrap">
+                <!-- 主分类标签 -->
                 <span class="bg-apple-light-gray text-gray-700 rounded-full px-2 py-0.5 text-xs mr-1 mb-1">${game.category}</span>
+                
+                <!-- 额外分类标签 -->
+                ${game.categories && Array.isArray(game.categories) && game.categories.length > 1 ? 
+                  game.categories.slice(1, 3).map(cat => 
+                    `<span class="bg-apple-light-gray text-gray-700 rounded-full px-2 py-0.5 text-xs mr-1 mb-1">${cat}</span>`
+                  ).join('') : ''}
+                
+                <!-- 游戏信息标签 -->
                 ${game.rating ? `<span class="bg-apple-light-gray text-gray-700 rounded-full px-2 py-0.5 text-xs mr-1 mb-1">★ ${game.rating}</span>` : ''}
                 ${game.plays ? `<span class="bg-apple-light-gray text-gray-700 rounded-full px-2 py-0.5 text-xs mr-1 mb-1">${game.plays} plays</span>` : ''}
             </div>
@@ -342,20 +351,77 @@ function changePage(page) {
     const paginationContainer = document.getElementById('pagination-container');
     if (!paginationContainer) return;
     
-    const buttons = paginationContainer.querySelectorAll('button');
-    buttons.forEach(button => {
-        if (button.textContent && parseInt(button.textContent) === page) {
-            button.className = 'w-10 h-10 rounded-full bg-apple-blue text-white flex items-center justify-center';
-        } else if (button.textContent && !isNaN(parseInt(button.textContent))) {
-            button.className = 'w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-700 hover:bg-apple-blue hover:text-white transition-colors';
-        }
-    });
-    
-    // Update prev/next button state
+    // 计算总页数
     const totalPages = Math.ceil(games.length / 12);
+    const maxVisiblePages = 5;
+
+    // 重新计算并更新可见页码范围
+    let startPage = Math.max(1, page - Math.floor(maxVisiblePages / 2));
+    let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+    
+    // 如果结束页码与开始页码的差小于最大可见页码数，则调整开始页码
+    if (endPage - startPage + 1 < maxVisiblePages && startPage > 1) {
+        startPage = Math.max(1, endPage - maxVisiblePages + 1);
+    }
+
+    // 清除现有页码按钮（保留前后按钮）
+    const buttons = Array.from(paginationContainer.querySelectorAll('button, span'));
     const prevButton = buttons[0];
     const nextButton = buttons[buttons.length - 1];
     
+    // 清除所有页码按钮和省略号，只保留前后按钮
+    paginationContainer.innerHTML = '';
+    paginationContainer.appendChild(prevButton);
+
+    // 添加第一页按钮（如果当前范围不从第一页开始）
+    if (startPage > 1) {
+        const firstPageButton = document.createElement('button');
+        firstPageButton.className = 'w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-700 hover:bg-apple-blue hover:text-white transition-colors';
+        firstPageButton.textContent = '1';
+        firstPageButton.addEventListener('click', () => changePage(1));
+        paginationContainer.appendChild(firstPageButton);
+        
+        // 如果开始页不是第2页，添加省略号
+        if (startPage > 2) {
+            const ellipsis = document.createElement('span');
+            ellipsis.className = 'w-10 h-10 flex items-center justify-center';
+            ellipsis.textContent = '...';
+            paginationContainer.appendChild(ellipsis);
+        }
+    }
+
+    // 添加中间页码按钮
+    for (let i = startPage; i <= endPage; i++) {
+        const pageButton = document.createElement('button');
+        pageButton.className = i === page 
+            ? 'w-10 h-10 rounded-full bg-apple-blue text-white flex items-center justify-center' 
+            : 'w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-700 hover:bg-apple-blue hover:text-white transition-colors';
+        pageButton.textContent = i;
+        pageButton.addEventListener('click', () => changePage(i));
+        paginationContainer.appendChild(pageButton);
+    }
+
+    // 添加最后一页按钮（如果当前范围不到最后一页）
+    if (endPage < totalPages) {
+        // 如果结束页不是倒数第二页，添加省略号
+        if (endPage < totalPages - 1) {
+            const ellipsis = document.createElement('span');
+            ellipsis.className = 'w-10 h-10 flex items-center justify-center';
+            ellipsis.textContent = '...';
+            paginationContainer.appendChild(ellipsis);
+        }
+        
+        const lastPageButton = document.createElement('button');
+        lastPageButton.className = 'w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-700 hover:bg-apple-blue hover:text-white transition-colors';
+        lastPageButton.textContent = totalPages;
+        lastPageButton.addEventListener('click', () => changePage(totalPages));
+        paginationContainer.appendChild(lastPageButton);
+    }
+
+    // 添加下一页按钮
+    paginationContainer.appendChild(nextButton);
+    
+    // 更新前一页/下一页按钮状态
     if (prevButton) {
         if (page === 1) {
             prevButton.classList.add('opacity-50', 'cursor-not-allowed');
