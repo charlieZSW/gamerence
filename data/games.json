@@ -1800,5 +1800,117 @@
         "isNew": true,
         "featured": true,
         "url": "./play.html?id=diamond-dungeon---match-3"
+    },
+    {
+        "id": "fruit-merge-juicy-drop-game-nyf",
+        "title": "Fruit Merge Juicy Drop Game Nyf",
+        "description": "Fruit Merge: Juicy Drop Game is a vibrant fruit-matching puzzle that challenges your strategic skills. Combine identical fruits to create larger ones, but beware—space is limited! With every merge, unlock exciting new fruits and keep the container from overflowing. Test your wit and enjoy a colorful journey of clever moves and thrilling transformations!",
+        "category": "puzzle",
+        "categories": [
+            "puzzle",
+            "adventure",
+            "sandbox"
+        ],
+        "embedUrl": "https://www.crazygames.com/embed/fruit-merge-juicy-drop-game-nyf",
+        "image": "https://imgs.crazygames.com/fruit-merge-juicy-drop-game-nyf_16x9/20250108085620/fruit-merge-juicy-drop-game-nyf_16x9-cover?metadata=none&quality=70&width=467.5",
+        "rating": 4.2,
+        "plays": 4621,
+        "dateAdded": "2025-03-29",
+        "isNew": true,
+        "featured": true,
+        "url": "./play.html?id=fruit-merge-juicy-drop-game-nyf"
+    },
+    {
+        "id": "murder",
+        "title": "Murder",
+        "description": "MURDER is a fun game of assassination. You wish to assassinate the king and take his place to rule over the kingdom. To start with, you must creep up behind the king and choose the opportune moment to strike and kill him. Once he is dispatched, you must quickly take his clothes and become the king yourself!Once you have successfully stolen the king's identity and eliminated him, you must then protect yourself from other would-be assassins who want to do exactly the same as you just did! Keep a watchful eye and be sure to never keep your back turned for too long! Do you have what it takes to become the assassin king?",
+        "category": "casual",
+        "categories": [
+            "casual",
+            "strategy",
+            "fashion"
+        ],
+        "embedUrl": "https://www.crazygames.com/embed/murder",
+        "image": "https://imgs.crazygames.com/games/murder/cover-1636453632912.png?metadata=none&quality=70&width=333",
+        "rating": 4.8,
+        "plays": 9999,
+        "dateAdded": "2025-03-29",
+        "isNew": true,
+        "featured": true,
+        "url": "./play.html?id=murder"
+    },
+    {
+        "id": "real-fishing-simulator",
+        "title": "Real Fishing Simulator",
+        "description": "Real Fishing Simulator is a simulation fishing game where you can travel along various rivers and lakes to catch some fish. Catch the mighty Dnieper, the mysterious Baikal, or even go to the most exotic reservoirs in the world! Sell the fish to get money and buy a new fishing rod for your fishing journey.",
+        "category": "simulation",
+        "categories": [
+            "simulation",
+            "adventure"
+        ],
+        "embedUrl": "https://www.crazygames.com/embed/real-fishing-simulator",
+        "image": "https://imgs.crazygames.com/real-fishing-simulator_16x9/20250317165257/real-fishing-simulator_16x9-cover?metadata=none&quality=70&width=333",
+        "rating": 4.6,
+        "plays": 17444,
+        "dateAdded": "2025-03-29",
+        "isNew": true,
+        "featured": false,
+        "url": "./play.html?id=real-fishing-simulator"
+    },
+    {
+        "id": "obby-tame-the-legendary-dragon",
+        "title": "Obby Tame The Legendary Dragon",
+        "description": "Obby: Legendary Dragon is a thrilling adventure battle game where you are on an epic quest to capture extraordinary creatures across fantastical worlds. Run through from enchanted forests to mystical mountains, each brimming with hundreds of stunning animals just waiting to be discovered. Get ready to hone your skills and grow your creatures through countless levels. With each step, you’ll forge friendships with fellow adventurers and uncover delightful surprises.",
+        "category": "adventure",
+        "categories": [
+            "adventure",
+            "rpg",
+            "platformer"
+        ],
+        "embedUrl": "https://www.crazygames.com/embed/obby-tame-the-legendary-dragon",
+        "image": "https://imgs.crazygames.com/obby-tame-the-legendary-dragon_16x9/20241218034006/obby-tame-the-legendary-dragon_16x9-cover?metadata=none&quality=70&width=333",
+        "rating": 4.0,
+        "plays": 19433,
+        "dateAdded": "2025-03-29",
+        "isNew": true,
+        "featured": true,
+        "url": "./play.html?id=obby-tame-the-legendary-dragon"
+    },
+    {
+        "id": "obby-1-to-spaceflight-altitude",
+        "title": "Obby 1 To Spaceflight Altitude",
+        "description": "Obby: +1 to Spaceflight Altitude is an adventure simulation space flight game that takes your cosmic adventures to new heights, literally as your protagonist aims to fly. Step into the shoes of your customizable Obb character, upgrade your abilities, and fuel your rockets so you can soar across the galaxy.",
+        "category": "adventure",
+        "categories": [
+            "adventure",
+            "rpg",
+            "simulation"
+        ],
+        "embedUrl": "https://www.crazygames.com/embed/obby-1-to-spaceflight-altitude",
+        "image": "https://imgs.crazygames.com/obby-1-to-spaceflight-altitude_16x9/20240903082318/obby-1-to-spaceflight-altitude_16x9-cover?metadata=none&quality=70&width=333",
+        "rating": 4.8,
+        "plays": 10556,
+        "dateAdded": "2025-03-29",
+        "isNew": true,
+        "featured": false,
+        "url": "./play.html?id=obby-1-to-spaceflight-altitude"
+    },
+    {
+        "id": "thief-puzzle",
+        "title": "Thief Puzzle",
+        "description": "Thief Puzzle is a clever 2D puzzle logic game that puts your problem-solving and strategy to the test. You control a sneaky thief’s hand as it reaches for valuable treasures, but the path is filled with complex traps, laser security systems, and tricky obstacles. Do you have what it takes to outsmart each trap that comes your way?",
+        "category": "puzzle",
+        "categories": [
+            "puzzle",
+            "strategy"
+        ],
+        "embedUrl": "https://www.crazygames.com/embed/thief-puzzle",
+        "image": "https://imgs.crazygames.com/thief-puzzle_16x9/20240919050737/thief-puzzle_16x9-cover?metadata=none&quality=70&width=363",
+        "rating": 3.6,
+        "plays": 14421,
+        "dateAdded": "2025-03-29",
+        "isNew": true,
+        "featured": false,
+        "url": "./play.html?id=thief-puzzle"
     }
 ]
